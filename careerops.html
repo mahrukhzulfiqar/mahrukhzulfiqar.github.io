@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An AI that fills the form and never clicks Submit. career-ops-dk case study, Mahrukh Zulfiqar</title>
+<meta name="description" content="career-ops-dk product case study: an agentic AI job-search pipeline for Denmark, designed so a human always clicks Submit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=11">
+</head>
+<body>
+<div class="wrap">
+<header class="site-head">
+  <a class="name" href="index.html">Mahrukh Zulfiqar</a>
+  <nav aria-label="Main">
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#projects" aria-current="page">Projects</a>
+    <a href="index.html#conferences">Workshops &amp; conferences</a>
+    <a href="about.html">About me</a>
+    <a class="pill" href="index.html#contact">Contact me</a>
+  </nav>
+</header>
+<main>
+<article class="article cs">
+  <p><a class="back" href="index.html#projects">Back to projects</a></p>
+  <p class="meta-line">career-ops-dk, personal product case study</p>
+  <h1>An AI that fills the form and never clicks Submit</h1>
+  <p class="sub">An agentic job-search pipeline for Denmark, designed around one rule: the step that cannot be undone stays with a human.</p>
+  <dl class="cs-meta">
+    <div><dt>Role</dt><dd>Product owner and contributor</dd></div>
+    <div><dt>Duration</dt><dd>September to November 2026</dd></div>
+    <div><dt>Status</dt><dd>In use</dd></div>
+  </dl>
+  <div class="links"><a class="btn primary" href="https://github.com/mahrukhzulfiqar/career-ops-dk">Code and product docs</a></div>
+
+  <p>career-ops-dk extends career-ops, an open-source AI job-search system, for the Danish market. It finds roles on Jobindex.dk that the standard setup never sees, triages and scores them, prepares a tailored application for each good fit, and has a browser agent fill the application form. Then it stops. The candidate reads the form and clicks Submit.</p>
+  <p>I own the repository and its product direction. I wrote the product case study, the decision log, the success metrics and the roadmap, designed how the AI agents are described and governed, and made the system run on macOS. The first version of the scanner and form filler was built by Talha (talha-zshan on GitHub), and the git history shows who wrote which code.</p>
+
+  <h2>Context and responsibility</h2>
+  <p>I use the pipeline for my own job search in Denmark, so I am also its first user. That made the stakes concrete: every application it touches goes to a real employer with my name on it.</p>
+  <p>The question behind the product is one I also teach in my Autonomy Ladder workshop: how much freedom should an AI agent get? Here the answer had to be specific, stage by stage, because a mistake in an application cannot be recalled.</p>
+
+  <h2>Problem and evidence</h2>
+  <p>Two gaps made an AI-run job search in Denmark worse than it needed to be.</p>
+  <ul>
+    <li><strong>Discovery missed most Danish roles.</strong> In one scan, the ten configured company boards returned 2 Danish product roles. Jobindex.dk returned 13, including the enterprise and public-sector tier (banks, regions, KOMBIT) that no company board reached.</li>
+    <li><strong>Applying was slow, and the fast options were unsafe.</strong> Every application means retyping the same details. Auto-apply tools fix that by submitting for you and guessing what they do not know, including work authorisation and salary. One popular open-source example tells the agent to make its best guess, even on legal declarations.</li>
+  </ul>
+  <p>The worst failure is not a slow application but a wrong one: a cover letter written for one employer arriving in another employer's form. It is visible, cannot be taken back, and reads as careless.</p>
+
+  <h2>Options and decision</h2>
+  <table>
+    <thead><tr><th>Option</th><th>What it optimised for</th><th>Decision</th></tr></thead>
+    <tbody>
+      <tr><td>Auto-apply: the agent fills and submits</td><td>The most applications for the least effort</td><td>Rejected. Applications cannot be recalled, and browser agents are not reliable over long sequences of steps.</td></tr>
+      <tr><td>Keep filling forms by hand</td><td>Full control, no new risk</td><td>Rejected. It keeps the slowest, least valuable part of the search.</td></tr>
+      <tr><td>The agent fills, a human submits <span class="chosen">Chosen</span></td><td>Removing the typing, not the judgement</td><td>Chosen. The submit action is blocked in code, and the form is left open in a browser tab for review.</td></tr>
+    </tbody>
+  </table>
+  <p>A rule in a prompt can be ignored by a model. An action the agent does not have cannot be used. So the click action is replaced by a guarded one that refuses submit, send and apply buttons in English and Danish, and navigation is limited to the posting's own website.</p>
+
+  <h3>What we deliberately did not build</h3>
+  <ul>
+    <li><strong>Automatic submission,</strong> even as an option.</li>
+    <li><strong>Guessed answers.</strong> Work authorisation, sponsorship, salary and diversity questions are answered from the profile or not at all.</li>
+    <li><strong>A fork of career-ops.</strong> The Danish additions install on top, so upstream updates keep working.</li>
+  </ul>
+
+  <h2>Agentic AI design</h2>
+  <p>The pipeline uses AI at four points, and each one gets only as much freedom as its mistakes can afford.</p>
+  <figure class="flow" aria-label="Pipeline: discover, decide, prepare, fill, then the candidate submits">
+<svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto">
+<title>career-ops-dk pipeline</title>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#8a94a8"/></marker></defs>
+<g font-family="inherit" text-anchor="middle">
+<g><rect x="4" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#d3dce5"/><text x="68" y="58" font-size="14" font-weight="600" fill="#16233f">Discover</text><text x="68" y="78" font-size="11" fill="#55617a">Jobindex + boards</text><text x="68" y="122" font-size="11" fill="#8a94a8">code only</text></g>
+<g><rect x="158" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#16233f"/><text x="222" y="58" font-size="14" font-weight="600" fill="#16233f">Decide</text><text x="222" y="78" font-size="11" fill="#55617a">triage, evaluate</text><text x="222" y="122" font-size="11" fill="#16233f">AI</text></g>
+<g><rect x="312" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#d3dce5"/><text x="376" y="58" font-size="14" font-weight="600" fill="#16233f">Prepare</text><text x="376" y="78" font-size="11" fill="#55617a">one folder per role</text><text x="376" y="122" font-size="11" fill="#8a94a8">code only</text></g>
+<g><rect x="466" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#16233f"/><text x="530" y="58" font-size="14" font-weight="600" fill="#16233f">Fill</text><text x="530" y="78" font-size="11" fill="#55617a">browser agent</text><text x="530" y="122" font-size="11" fill="#16233f">AI, fenced</text></g>
+<g><rect x="620" y="30" width="136" height="70" rx="35" fill="#e3a12f"/><text x="688" y="58" font-size="14" font-weight="700" fill="#16233f">You submit</text><text x="688" y="78" font-size="11" fill="#16233f">after review</text><text x="688" y="122" font-size="11" fill="#8a94a8">human only</text></g>
+<g stroke="#8a94a8" stroke-width="1.5" marker-end="url(#ar)"><line x1="134" y1="65" x2="154" y2="65"/><line x1="288" y1="65" x2="308" y2="65"/><line x1="442" y1="65" x2="462" y2="65"/><line x1="596" y1="65" x2="616" y2="65"/></g>
+</g></svg>
+<figcaption>AI is used only where judgement is needed. Everything that plain code can do, and the one step that cannot be undone, stays outside the model.</figcaption>
+</figure>
+  <table>
+    <thead><tr><th>Stage</th><th>Freedom</th><th>Guardrails</th></tr></thead>
+    <tbody>
+      <tr><td>Conversation with the agent CLI</td><td>Works with the candidate, turn by turn</td><td>Loads the detailed rules only when a question needs them</td></tr>
+      <tr><td>Triage</td><td>Read three files, write one</td><td>Cannot open links or start other agents; unknown facts go to "maybe" with the reason</td></tr>
+      <tr><td>Evaluation</td><td>Runs unattended</td><td>The one accepted exception: the upstream runner skips permission checks. Documented, and narrowing it is on the roadmap</td></tr>
+      <tr><td>Form filling</td><td>Acts on a live website</td><td>No JavaScript or file actions except uploading the CV; submit blocked; own site only; stops on unknown questions and captchas</td></tr>
+    </tbody>
+  </table>
+  <p>Job postings are written by third parties and can contain text that looks like instructions. Every prompt treats them as untrusted data, and nothing in a posting can widen what an agent may read or write.</p>
+
+  <h2>Trade-offs</h2>
+  <ul>
+    <li><strong>A human reviews every form:</strong> slower than auto-apply, but nothing is sent that the candidate has not read.</li>
+    <li><strong>Unknown questions stop the run:</strong> more runs end early until the profile is complete, but nothing is invented.</li>
+    <li><strong>The score bar is typed each run:</strong> one more argument, but widening the net is always a conscious choice.</li>
+    <li><strong>Cheap triage from title and location only:</strong> a good role with an unusual title can be skipped, but most off-target roles cost almost nothing to rule out.</li>
+    <li><strong>No personal data in the repository:</strong> the project can be shared, but there is no offsite backup of the search by default.</li>
+  </ul>
+
+  <h2>Execution</h2>
+  <p>The pipeline runs in one command: scan, check the posting is still live, triage, evaluate, update the tracker and check its integrity. For each role above the score bar, it exports a self-contained folder with the tailored CV, cover letter, facts and a checksum for every file. The form filler reads only that folder.</p>
+  <p>Before anything is uploaded, the filler checks that the cover letter names the right company. A checksum proves a file is intact; only this proves it is the right file. A free dry run checks checksums, cover letters and whether the posting is still live before any browser opens or any money is spent.</p>
+
+  <h2>Result and limits</h2>
+  <blockquote><p><strong>Measured before building.</strong> A read-only test against a real posting set the cost per form at about $0.26, before the queue and runner were built.</p></blockquote>
+  <blockquote><p><strong>A shortcut that failed silently.</strong> Installing the additions as symlinks made the scan quietly lose its Jobindex source and the pipeline report 0 pending roles. It was reverted to plain copies the same day, because missing jobs without knowing it is worse than a crash.</p></blockquote>
+  <p>The limits are clear too. The submit guard matches button text, so an oddly labelled button could get through; the human review is the real guarantee, and blocking the submit request at network level is next. Lever and Workday forms often end as stops rather than fills.</p>
+  <p><strong>How success is measured:</strong> interviews per application submitted, not applications per week. The guardrails that must stay at zero are submissions without a human click, guessed answers, files sent to the wrong employer and duplicate applications.</p>
+
+  <h2>Learning</h2>
+  <p>The useful question about an AI agent is not whether it can do a task but what happens when it gets it wrong. Answering that stage by stage decided almost everything here: where to use a model, where plain code is better, and which single step must stay human.</p>
+
+  <h2>Evidence note</h2>
+  <p class="note-small">The 13 vs 2 roles comparison comes from one scan, and the cost per application from the initial test runs. Outcome data (interviews per application) is not yet tracked; it is on the roadmap. The full reasoning is in the <a href="https://github.com/mahrukhzulfiqar/career-ops-dk/blob/main/product/decision-log.md">decision log</a>.</p>
+
+  <h2>Related work</h2>
+  <ul class="related">
+    <li><a href="gridwise.html">GridWise: when should I charge my EV tonight?</a></li>
+    <li><a href="workshops.html">The Autonomy Ladder: a workshop on how much freedom to give an AI agent</a></li>
+  </ul>
+</article>
+
+</main>
+<footer class="site-foot">
+  <p>Mahrukh Zulfiqar, Copenhagen</p>
+  <p><a href="mailto:mahrukzulfiqar@gmail.com">Email</a> &nbsp; <a href="https://www.linkedin.com/in/mahrukhzulfiqar/">LinkedIn</a> &nbsp; <a href="https://github.com/mahrukhzulfiqar">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>
