@@ -52,7 +52,7 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: 600; }
 .intro p { color: var(--ink-soft); font-size: 1.2rem; max-width: var(--measure); margin: 0 0 1rem; }
 .social { display: flex; gap: 1.25rem; margin-top: 1.5rem; font-size: 0.95rem; }
 .portrait { width: 15rem; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: var(--tint); display: grid; place-items: center; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); display: block; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
 .portrait .initials { font-size: 3.5rem; font-weight: 700; color: var(--ink-faint); letter-spacing: 0.02em; }
 
 /* page head */
@@ -285,6 +285,7 @@ section[id] { scroll-margin-top: 1rem; }
 .related a:hover { text-decoration: underline; }
 
 /* CV download button in intro links */
-.social { align-items: center; }
+.social { align-items: center; flex-wrap: wrap; row-gap: 0.75rem; }
+.intro > div { min-width: 0; }
 .social a.cv-btn { text-decoration: none; padding: 0.45rem 1rem; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 600; }
 .social a.cv-btn:hover { background: #24365c; color: #fff; }
