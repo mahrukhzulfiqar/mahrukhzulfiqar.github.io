@@ -262,3 +262,24 @@ section[id] { scroll-margin-top: 1rem; }
 .logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 0.3rem; background: #fff; }
 .logo-txt { font-size: 0.6rem; font-weight: 700; color: var(--ink-soft); text-align: center; line-height: 1.1; padding: 0 0.15rem; }
 .certs li { display: flex; gap: 0.9rem; align-items: center; }
+
+/* case study (Lorenzo-style) */
+.cs { padding-top: 2.5rem; }
+.cs .meta-line { color: var(--ink-faint); margin: 1.5rem 0 0.5rem; }
+.cs h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.08; margin: 0 0 0.75rem; font-weight: 600; letter-spacing: -0.03em; }
+.cs .sub { font-size: 1.25rem; color: var(--ink-soft); margin: 0 0 1.5rem; }
+.cs-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 2.5rem; margin: 0 0 0.5rem; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.cs-meta dt { font-size: 0.85rem; color: var(--ink-faint); }
+.cs-meta dd { margin: 0; font-weight: 600; }
+.cs h2 { font-size: 1.6rem; margin: 3.25rem 0 0.9rem; font-weight: 600; letter-spacing: -0.02em; }
+.cs h3 { font-size: 1.2rem; margin: 2rem 0 0.6rem; }
+.cs p, .cs li { font-size: 1.06rem; line-height: 1.7; }
+.cs ul { padding-left: 1.2rem; }
+.cs li { margin-bottom: 0.45rem; }
+.cs table td:first-child { font-weight: 600; width: 34%; }
+.chosen { display: inline-block; margin-top: 0.35rem; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.55rem; border-radius: 999px; background: #e3f2e5; color: #1d5a2a; }
+.note-small { font-size: 0.95rem !important; color: var(--ink-soft) !important; }
+.related { list-style: none; padding: 0 !important; border-top: 1px solid var(--line); }
+.related li { border-bottom: 1px solid var(--line); margin: 0 !important; }
+.related a { display: block; padding: 0.9rem 0; text-decoration: none; font-weight: 600; }
+.related a:hover { text-decoration: underline; }

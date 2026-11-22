@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GridWise case study, Mahrukh Zulfiqar</title>
-<meta name="description" content="How I scoped, built and changed GridWise, an AI agent for EV charging in Denmark.">
+<title>When should I charge my EV tonight? GridWise case study, Mahrukh Zulfiqar</title>
+<meta name="description" content="GridWise product case study: turning Energinet's open data into a trusted EV charging recommendation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 <div class="wrap">
@@ -16,80 +16,103 @@
   <a class="name" href="index.html">Mahrukh Zulfiqar</a>
   <nav aria-label="Main">
     <a href="index.html#experience">Experience</a>
-    <a href="index.html#projects">Projects</a>
+    <a href="index.html#projects" aria-current="page">Projects</a>
     <a href="index.html#conferences">Workshops &amp; conferences</a>
     <a href="about.html">About me</a>
     <a class="pill" href="index.html#contact">Contact me</a>
   </nav>
 </header>
 <main>
-<div style="padding-top:2.5rem"><div class="article">
+<article class="article cs">
   <p><a class="back" href="index.html#projects">Back to projects</a></p>
-  <h1>GridWise: when should I charge my EV tonight?</h1>
-  <p class="sub">A small agentic AI product on Energinet's open data. Built and shipped in November 2026, then changed by what real data and research showed.</p>
-  <div class="links">
-    <a class="btn primary" href="https://gridwise-dk.streamlit.app">Try the live demo</a>
-    <a class="btn" href="https://github.com/mahrukhzulfiqar/gridwise">See the code and product docs</a>
-  </div>
+  <p class="meta-line">GridWise, personal product case study</p>
+  <h1>When should I charge my EV tonight?</h1>
+  <p class="sub">Turning Energinet's open data into a charging recommendation people can trust, and narrowing the product when the evidence pushed back.</p>
+  <dl class="cs-meta">
+    <div><dt>Role</dt><dd>Product owner and builder</dd></div>
+    <div><dt>Duration</dt><dd>November 2026</dd></div>
+    <div><dt>Status</dt><dd>Live demo, v0.1</dd></div>
+  </dl>
+  <div class="links"><a class="btn primary" href="https://gridwise-dk.streamlit.app">Try the live demo</a><a class="btn" href="https://github.com/mahrukhzulfiqar/gridwise">Code and product docs</a></div>
 
-  <h2>The problem</h2>
-  <p>Since October 2025, Danish day-ahead electricity prices change every 15 minutes. The CO2 intensity of the grid moves with the wind, and grid tariffs are highest between 17:00 and 21:00. An EV is the biggest flexible load in most homes, so timing matters. The data to time it well is free and public, but it sits in an API that almost nobody will query.</p>
+  <p>GridWise answers one question for EV owners in Denmark: when should I charge so the car is ready in the morning, at the lowest price and CO2? It reads day-ahead electricity prices and the CO2 forecast from Energinet's open Energi Data Service, finds the best charging window, and compares it with plugging in and charging straight away. A Claude agent answers in plain English or Danish, through an MCP server, but never does the maths itself.</p>
+  <p>I defined the problem and scope, set the success metrics and roadmap, made and logged the product decisions, ran the desk research, and built and shipped the product. It is a solo project, so every decision and every mistake here is mine.</p>
+
+  <h2>Context and responsibility</h2>
+  <p>I built GridWise to test a question I keep meeting in AI product work: how far can an agent be trusted when its answer turns into a decision about money? Energy was a natural domain. Denmark publishes unusually good open energy data, and since October 2025 day-ahead prices change every 15 minutes, so the timing problem is real and getting harder.</p>
+  <p>I owned the whole product end to end: discovery, scope, decisions, data access, the planner, the agent, the app, testing and the launch.</p>
+
+  <h2>Problem and evidence</h2>
+  <p>Three things decide what charging really costs: the spot price, which moves every 15 minutes; the CO2 intensity of the grid, which moves with the wind; and the grid tariff, which is highest between 17:00 and 21:00. An EV is the biggest flexible load in most homes, but the data needed to time it well sits in an API that almost nobody will ever query.</p>
   <figure class="day wide">
     <svg viewBox="0 0 720 120" role="img" aria-labelledby="dayTitle"><title id="dayTitle">Grid tariff over 24 hours: lowest 00:00 to 06:00, highest 17:00 to 21:00</title><rect x="0.0" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="30.2" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="60.3" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="90.5" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="120.7" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="150.8" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="181.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="211.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="241.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="271.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="301.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="331.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="362.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="392.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="422.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="452.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="482.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect class="peak" x="512.8" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="543.0" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="573.2" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="603.3" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect x="633.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="663.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="693.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><text x="0.0" y="116" font-size="12" fill="var(--ink-soft)">00:00</text><text x="181.0" y="116" font-size="12" fill="var(--ink-soft)">06:00</text><text x="512.8" y="116" font-size="12" fill="var(--ink-soft)">17:00</text><text x="633.5" y="116" font-size="12" fill="var(--ink-soft)">21:00</text></svg>
     <figcaption>Zealand grid tariff over a winter day (Radius, incl. VAT from 1 Oct 2025): 12 øre/kWh at night, 37 during the day, 110 at the evening peak.</figcaption>
   </figure>
-
-  <h2>Who it's for, and how that changed</h2>
-  <p>I started with a broad assumption: most EV owners plug in when they get home and charge at the evening peak. Before building more, I tested that against published evidence.</p>
+  <p>My starting assumption was that most EV owners plug in when they get home and charge right at the evening peak. Before building more, I tested that against published evidence:</p>
   <ul>
-    <li>Radius reported that EV owners had already moved much of their charging to the night after the 2023 tariff change.</li>
-    <li>About two thirds of Danish electricity agreements are variable-price, so timing helps most people, but not everyone.</li>
-    <li>Several charger apps already schedule charging by price automatically.</li>
+    <li><strong>Behaviour has already shifted.</strong> Radius reported that after the 2023 tariff change, EV charging between 17:00 and 21:00 fell below average and night charging rose sharply.</li>
+    <li><strong>Most, but not all, households can benefit.</strong> About two thirds of Danish electricity agreements were variable-price in 2023, so timing helps most people but not everyone.</li>
+    <li><strong>The tariff is often the bigger lever.</strong> The Zealand winter tariff is about nine times higher in the evening peak than at night.</li>
+    <li><strong>Competitors already automate.</strong> Several charger and energy apps schedule charging by price automatically.</li>
+    <li><strong>Users respond to prices.</strong> A DTU survey of 500 Danish EV owners found most check prices and many will postpone charging by a day or more.</li>
   </ul>
-  <p>So I narrowed the user: <strong>households with a basic charger and no smart charging app</strong>, plus <strong>developers and energy teams</strong> who want price and CO2 planning as tools for their own AI agents. <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/desk-research.md">Full desk research with sources</a>.</p>
+  <p>Two of my core assumptions were weaker than I thought. That changed who the product is for: households with a basic charger and no smart charging app, and developers or energy teams who want price and CO2 planning as tools for their own AI agents.</p>
 
-  <h2>What I built</h2>
-  <p>A planner that finds the best continuous charging window between plug-in and ready-by, optimised for price, CO2 or both, and compares it with charging straight away. It is exposed as tools through an MCP server, so a Claude agent can answer plain-language questions in English or Danish, and the same tools work in any MCP client.</p>
-  <figure class="wide">
-    <img src="img/gridwise-planner.png" alt="GridWise charging planner showing a warning that tomorrow's prices are not yet published, a recommended window of 18:15 to 22:00, and a price chart" width="1040" height="1210" style="width:100%;height:auto;border:1px solid var(--line);border-radius:8px">
-    <figcaption>The live planner on 22 November 2026, before the next day's prices were published.</figcaption>
-  </figure>
-
-  <h2>Decisions that shaped it</h2>
+  <h2>Options and decision</h2>
   <table>
-    <thead><tr><th>Decision</th><th>Why</th><th>Trade-off</th></tr></thead>
+    <thead><tr><th>Option</th><th>What it optimised for</th><th>Decision</th></tr></thead>
     <tbody>
-      <tr><td>The model talks, the code calculates</td><td>People act on money and CO2 numbers, so every number must be reproducible and tested. Each tool call is shown to the user.</td><td>Less flexible for unusual questions</td></tr>
-      <tr><td>Ship spot price only, and say so in every answer</td><td>A working, trusted loop first, with the limitation visible</td><td>Savings differ from the real bill near the tariff peak</td></tr>
-      <tr><td>One continuous charging window</td><td>Matches how people and chargers schedule charging</td><td>Leaves a small saving on the table some nights</td></tr>
-      <tr><td>A planner that works without AI</td><td>Anyone can try it free, and it proves the value is in the planner, not the chat</td><td>Chat is optional</td></tr>
+      <tr><td>Let the language model read the price data and recommend a window</td><td>The fastest path and the most flexible answers</td><td>Rejected. Numbers would not be reproducible or testable, and people act on them with real money.</td></tr>
+      <tr><td>A tested planner behind MCP tools, with the model explaining the result <span class="chosen">Chosen</span></td><td>Trust, testability, and tools other agents can reuse</td><td>Chosen. The model picks the tool and explains; the planner calculates; every tool call is shown to the user.</td></tr>
+      <tr><td>Control the charger directly</td><td>The most value per user, with no action needed</td><td>Not now. It needs charger integrations and earned trust first, and existing apps already do it for smart chargers.</td></tr>
     </tbody>
   </table>
-  <p><a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/decision-log.md">All ten decisions in the decision log</a>.</p>
+  <p>Keeping the maths out of the model is the decision everything else rests on. It also meant the planner could work on its own, so anyone can try the product without an AI key, and the value is clearly in the planner, not the chat.</p>
 
-  <h2>What happened after launch</h2>
-  <p>The first live run surfaced two problems no test had caught.</p>
-  <blockquote><p><strong>The data provider changed its rules.</strong> Energinet had introduced per-dataset rate limits, and the app was blocked within seconds. I redesigned data access the same day: one call per dataset instead of one per day, a 15-minute cache, and respecting the provider's wait time.</p></blockquote>
-  <blockquote><p><strong>A correct answer can still mislead.</strong> Before tomorrow's prices are published around 13:00, the planner recommended the best slot of the evening, which is the peak. It now says clearly what it can and cannot see yet, as in the screenshot above.</p></blockquote>
-
-  <h2>How I'd measure success</h2>
-  <p><strong>North star:</strong> saving per charging session compared with charging straight away, in kroner and kg CO2. It measures value to the user, not time spent in the app. <strong>Guardrail:</strong> every number in an answer comes from a tool call.</p>
-
-  <h2>What's next</h2>
+  <h3>What I deliberately did not build</h3>
   <ul>
-    <li>All-in price: grid tariff per grid company, electricity tax and VAT, so savings match the bill</li>
-    <li>Interviews with five EV owners in the refined segment (<a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/discovery-plan.md">discovery plan</a>)</li>
-    <li>An evaluation set of labelled questions for the agent</li>
+    <li><strong>Grid tariffs, tax and VAT.</strong> v0.1 uses spot price only, and every answer says so. All-in pricing is first on the roadmap.</li>
+    <li><strong>Charger control and notifications.</strong> Advice first; automation only once the recommendation is trusted.</li>
+    <li><strong>Accounts and history.</strong> One question answered well needs none of it.</li>
   </ul>
 
-  <h2>What I learned</h2>
-  <p>Scoping to one job made every later decision easier. Keeping the maths out of the model made the AI part trustworthy. And the most useful product work happened after launch, when real data and published evidence pushed back on my assumptions.</p>
-</div></div>
-<section class="closing" aria-labelledby="closing-h">
-  <h2 id="closing-h">Want to talk about GridWise?</h2>
-  <p>I'm happy to walk through the decisions in more detail, including what I would do differently.</p>
-  <div class="btns"><a class="btn primary" href="index.html#contact">Get in touch</a></div>
-</section>
+  <h2>Trade-offs</h2>
+  <ul>
+    <li><strong>Spot price only:</strong> a working, honest loop sooner, but savings differ from the real bill near the tariff peak.</li>
+    <li><strong>One continuous charging window:</strong> easy to act on and how chargers schedule, but it leaves a small saving on the table some nights.</li>
+    <li><strong>A balanced price and CO2 score:</strong> simple and explainable, but relative. On a day with little CO2 variation, CO2 still gets half the weight.</li>
+    <li><strong>Stating defaults instead of asking</strong> (40 kWh, 11 kW, East Denmark): one useful answer beats a round of questions, and the answer says what it assumed.</li>
+  </ul>
+
+  <h2>Execution</h2>
+  <p>GridWise is a small Python product: an Energi Data Service client, a deterministic charging planner, an MCP server exposing three tools (prices, CO2 forecast and a charging plan), a Claude agent that discovers those tools at runtime, and a Streamlit app with a chat tab and a planner tab that works without AI. It uses the 15-minute <em>DayAheadPrices</em> dataset rather than the older hourly one most tutorials still use, which stopped in September 2025.</p>
+  <figure class="wide">
+    <img src="img/gridwise-planner.png" alt="GridWise charging planner showing a warning that tomorrow's prices are not yet published, a recommended window and a price chart" width="1040" height="1210" loading="lazy" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px">
+    <figcaption>The live planner on 22 November 2026, before the next day's prices were published.</figcaption>
+  </figure>
+  <p>22 automated tests cover the planner, the data client, the MCP server end to end and the agent loop, and they run on every push.</p>
+
+  <h2>Result and limits</h2>
+  <p>The first live run surfaced two problems that no test had caught.</p>
+  <blockquote><p><strong>The data provider changed its rules.</strong> Energinet had introduced per-dataset rate limits, and the app was blocked within seconds. I redesigned data access the same day: one call per dataset instead of one per day, a 15-minute cache, and respecting the provider's requested wait time.</p></blockquote>
+  <blockquote><p><strong>A correct answer can still mislead.</strong> Before the next day's prices are published, around 13:00, the planner recommended the best slot of the evening, which is the peak. It now says clearly what it can and cannot see yet.</p></blockquote>
+  <p>GridWise is live, with ten product decisions logged and a public roadmap. Its limits are just as clear: it has no users yet, so the success metrics are a plan rather than results, and its savings are spot-price savings, not bill savings.</p>
+  <p><strong>How I would measure success:</strong> saving per charging session against charging straight away, in kroner and kg CO2. It measures value to the user, not time in the app. The guardrail is that every number in an answer comes from a tool call.</p>
+
+  <h2>Learning</h2>
+  <p>Scoping to one job made every later decision easier. Keeping the maths out of the model made the AI part trustworthy. And the most useful product work happened after launch, when real data and published evidence pushed back on assumptions I had treated as facts.</p>
+  <p>Next: all-in prices with grid tariffs, interviews with EV owners in the narrowed segment, and an evaluation set of labelled questions for the agent.</p>
+
+  <h2>Evidence note</h2>
+  <p class="note-small">The research here is desk research from published sources (Radius, Green Power Denmark, Bolius, a DTU study and competitor apps), not user interviews; those are planned. The example answer in the repository README uses a bundled sample day, while the screenshot above is from live data. Sources are listed in the <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/desk-research.md">desk research</a>, and every decision is in the <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/decision-log.md">decision log</a>.</p>
+
+  <h2>Related work</h2>
+  <ul class="related">
+    <li><a href="engineering.html">Engineering archive: data and AI projects from my engineering years</a></li>
+    <li><a href="workshops.html">The Autonomy Ladder: a workshop on how much freedom to give an AI agent</a></li>
+  </ul>
+</article>
+
 </main>
 <footer class="site-foot">
   <p>Mahrukh Zulfiqar, Copenhagen</p>
