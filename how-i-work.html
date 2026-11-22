@@ -7,10 +7,16 @@
 <meta name="description" content="Product principles and experience of Mahrukh Zulfiqar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="ticker" role="region" aria-label="Live electricity prices">
+  <div class="wrap">
+    <span class="live-tag"><span class="dot" aria-hidden="true"></span>Live from Energinet</span>
+    <span id="ticker-data" style="display:contents"><span>Loading today's prices…</span></span>
+  </div>
+</div>
 <div class="wrap">
 <header class="site-head">
   <a class="name" href="index.html">Mahrukh Zulfiqar</a>
@@ -18,84 +24,43 @@
     <a href="projects.html">Projects</a>
     <a href="workshops.html">Workshops</a>
     <a href="how-i-work.html" aria-current="page">How I work</a>
-    <a href="contact.html" class="nav-cta">Contact</a>
+    <a class="pill" href="contact.html">Get in touch</a>
   </nav>
 </header>
-
 <main>
 <div class="page-head">
-  <h1>How I work</h1>
-  <p class="intro">Four habits I bring to every product, and the experience they come from.</p>
+  <p class="label">How I work</p>
+  <h1>Four habits I bring to every product</h1>
+  <p>And the experience they come from.</p>
 </div>
-
-<section class="first" aria-label="Principles">
-  <div class="principles">
-    <div class="principle">
-      <h2 class="h3">Prototype before asking for engineering time</h2>
-      <p>At The LEGO Group I built and tested generative AI prototypes with engineering before anything went on the roadmap. Only the strongest use case made it in.</p>
-    </div>
-    <div class="principle">
-      <h2 class="h3">Write the decision down</h2>
-      <p>Every project gets a decision log: what we chose, why, and what we gave up. <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/decision-log.md">GridWise has ten</a>.</p>
-    </div>
-    <div class="principle">
-      <h2 class="h3">Let evidence change the plan</h2>
-      <p>Discovery with stakeholders reprioritised half of a platform roadmap before engineering started. On GridWise, research narrowed the target user after launch.</p>
-    </div>
-    <div class="principle">
-      <h2 class="h3">Measure value, not activity</h2>
-      <p>Success is what the user gains, like kroner saved per charging session, not clicks or time in the app.</p>
-    </div>
-  </div>
+<section aria-label="Principles" style="padding-top:1rem">
+  <ul class="principles">
+    <li><h3>Prototype before asking for engineering time</h3><p>At The LEGO Group I built and tested generative AI prototypes with engineering before anything went on the roadmap. Only the strongest use case made it in.</p></li>
+    <li><h3>Write the decision down</h3><p>Every project gets a decision log: what we chose, why, and what we gave up. <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/decision-log.md">GridWise has ten</a>.</p></li>
+    <li><h3>Let evidence change the plan</h3><p>Discovery with stakeholders reprioritised half of a platform roadmap before engineering started. On GridWise, research narrowed the target user after launch.</p></li>
+    <li><h3>Measure value, not activity</h3><p>Success is what the user gains, like kroner saved per charging session, not clicks or time in the app.</p></li>
+  </ul>
 </section>
-
 <section aria-labelledby="exp-h">
-  <h2 id="exp-h">Experience</h2>
-  <ol class="timeline">
-    <li>
-      <div class="when">2026</div>
-      <div>
-        <h3>Product Manager, The LEGO Group</h3>
-        <p>Led delivery of a global investment-planning platform used by 2,500+ people, with a team of eight engineers and consultants. Discovery with stakeholders reprioritised half of the initial roadmap before engineering time was spent on it.</p>
-      </div>
-    </li>
-    <li>
-      <div class="when">2023 to 2025</div>
-      <div>
-        <h3>Data Engineer, The LEGO Group</h3>
-        <p class="note">De facto Product Manager for my own initiatives from 2024.</p>
-        <p>Scoped and shipped an internal AI assistant (retrieval-augmented) end to end, validated at 85% answer accuracy before rollout. Led data pipelines for an ESG and energy-reporting platform on AWS, Azure and Databricks.</p>
-      </div>
-    </li>
-    <li>
-      <div class="when">2022 to 2023</div>
-      <div>
-        <h3>Junior Product Owner (part-time), Admiral, Cardiff</h3>
-        <p>Turned 20+ customer interviews into five roadmap initiatives for the digital customer experience squad.</p>
-      </div>
-    </li>
-    <li>
-      <div class="when">2023</div>
-      <div>
-        <h3>BSc Applied Software Engineering, Cardiff University</h3>
-        <p>Also: Professional Scrum Product Owner I.</p>
-      </div>
-    </li>
-  </ol>
+  <div class="section-title"><h2 id="exp-h">Experience</h2></div>
+  <dl class="rows">
+    <div><dt>2026</dt><dd><strong>Product Manager, The LEGO Group.</strong> Led delivery of a global investment-planning platform used by 2,500+ people, with a team of eight engineers and consultants.</dd></div>
+    <div><dt>2023 to 2025</dt><dd><strong>Data Engineer, The LEGO Group.</strong> De facto Product Manager for my own initiatives from 2024. Shipped an internal AI assistant validated at 85% answer accuracy, and led data pipelines for an ESG and energy-reporting platform on AWS, Azure and Databricks.</dd></div>
+    <div><dt>2022 to 2023</dt><dd><strong>Junior Product Owner (part-time), Admiral, Cardiff.</strong> Turned 20+ customer interviews into five roadmap initiatives.</dd></div>
+    <div><dt>Education</dt><dd><strong>BSc Applied Software Engineering, Cardiff University.</strong> Professional Scrum Product Owner I.</dd></div>
+  </dl>
 </section>
-<section class="cta" aria-labelledby="cta-h">
-  <h2 id="cta-h">Sound like your team?</h2>
+<section class="closing" aria-labelledby="closing-h">
+  <h2 id="closing-h">Sound like your team?</h2>
   <p>I'm looking for Product Manager and Product Owner roles in Copenhagen and Zealand.</p>
-  <div class="links">
-    <a class="btn light" href="contact.html">Get in touch</a>
-  </div>
+  <div class="btns"><a class="btn primary" href="contact.html">Get in touch</a></div>
 </section>
 </main>
-
 <footer class="site-foot">
-  <p>Mahrukh Zulfiqar, 2026. Hand-built and hosted on GitHub Pages.</p>
+  <p>Mahrukh Zulfiqar, Copenhagen</p>
+  <p><a href="https://github.com/mahrukhzulfiqar">GitHub</a></p>
 </footer>
 </div>
-
+<script src="ticker.js" defer></script>
 </body>
 </html>

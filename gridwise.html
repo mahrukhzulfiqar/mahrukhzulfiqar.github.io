@@ -7,10 +7,16 @@
 <meta name="description" content="How I scoped, built and changed GridWise, an AI agent for EV charging in Denmark.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="ticker" role="region" aria-label="Live electricity prices">
+  <div class="wrap">
+    <span class="live-tag"><span class="dot" aria-hidden="true"></span>Live from Energinet</span>
+    <span id="ticker-data" style="display:contents"><span>Loading today's prices…</span></span>
+  </div>
+</div>
 <div class="wrap">
 <header class="site-head">
   <a class="name" href="index.html">Mahrukh Zulfiqar</a>
@@ -18,13 +24,12 @@
     <a href="projects.html" aria-current="page">Projects</a>
     <a href="workshops.html">Workshops</a>
     <a href="how-i-work.html">How I work</a>
-    <a href="contact.html" class="nav-cta">Contact</a>
+    <a class="pill" href="contact.html">Get in touch</a>
   </nav>
 </header>
-
 <main>
-<div class="article">
-  <p><a href="projects.html">Back to projects</a></p>
+<div style="padding-top:2.5rem"><div class="article">
+  <p><a class="back" href="projects.html">Back to projects</a></p>
   <h1>GridWise: when should I charge my EV tonight?</h1>
   <p class="sub">A small agentic AI product on Energinet's open data. Built and shipped in November 2026, then changed by what real data and research showed.</p>
   <div class="links">
@@ -84,20 +89,18 @@
 
   <h2>What I learned</h2>
   <p>Scoping to one job made every later decision easier. Keeping the maths out of the model made the AI part trustworthy. And the most useful product work happened after launch, when real data and published evidence pushed back on my assumptions.</p>
-</div>
-<section class="cta" aria-labelledby="cta-h">
-  <h2 id="cta-h">Want to talk about GridWise?</h2>
+</div></div>
+<section class="closing" aria-labelledby="closing-h">
+  <h2 id="closing-h">Want to talk about GridWise?</h2>
   <p>I'm happy to walk through the decisions in more detail, including what I would do differently.</p>
-  <div class="links">
-    <a class="btn light" href="contact.html">Get in touch</a>
-  </div>
+  <div class="btns"><a class="btn primary" href="contact.html">Get in touch</a></div>
 </section>
 </main>
-
 <footer class="site-foot">
-  <p>Mahrukh Zulfiqar, 2026. Hand-built and hosted on GitHub Pages.</p>
+  <p>Mahrukh Zulfiqar, Copenhagen</p>
+  <p><a href="https://github.com/mahrukhzulfiqar">GitHub</a></p>
 </footer>
 </div>
-
+<script src="ticker.js" defer></script>
 </body>
 </html>

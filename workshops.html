@@ -7,10 +7,16 @@
 <meta name="description" content="Hands-on workshops on product decisions and agentic AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="ticker" role="region" aria-label="Live electricity prices">
+  <div class="wrap">
+    <span class="live-tag"><span class="dot" aria-hidden="true"></span>Live from Energinet</span>
+    <span id="ticker-data" style="display:contents"><span>Loading today's prices…</span></span>
+  </div>
+</div>
 <div class="wrap">
 <header class="site-head">
   <a class="name" href="index.html">Mahrukh Zulfiqar</a>
@@ -18,64 +24,51 @@
     <a href="projects.html">Projects</a>
     <a href="workshops.html" aria-current="page">Workshops</a>
     <a href="how-i-work.html">How I work</a>
-    <a href="contact.html" class="nav-cta">Contact</a>
+    <a class="pill" href="contact.html">Get in touch</a>
   </nav>
 </header>
-
 <main>
 <div class="page-head">
-  <h1>Workshops</h1>
-  <p class="intro">I design hands-on sessions that help product, design and engineering teams make better decisions together, especially about AI.</p>
+  <p class="label">Workshop, Future Product Days, Copenhagen, September 2026</p>
+  <h1>The Autonomy Ladder: designing guardrails for agentic AI</h1>
+  <p>A hands-on session that helps product, design and engineering teams decide how much an AI agent should do on its own.</p>
 </div>
-
-<section class="first" aria-label="Workshops">
-  <article class="feature solo">
-    <div class="feature-text">
-      <span class="status is-live">Sold out</span>
-      <h2 class="h3">The Autonomy Ladder: designing guardrails for agentic AI</h2>
-      <p class="lede">A 75-minute hands-on workshop at Future Product Days, Copenhagen, September 2026, for 50 product, design and engineering professionals.</p>
-      <div class="facts-row">
-        <div><strong>50</strong><span>participants</span></div>
-        <div><strong>75 min</strong><span>hands-on</span></div>
-        <div><strong>Sold out</strong><span>Future Product Days 2026</span></div>
-      </div>
-      <dl class="highlights">
-        <dt>The question</dt><dd>How much should an AI agent be allowed to do on its own, and what has to be true before it gets more autonomy?</dd>
-        <dt>How it works</dt><dd>Teams work through realistic agent scenarios as a game, deciding where each one sits on the ladder and which guardrails it needs before it can move up.</dd>
-        <dt>What people asked afterwards</dt><dd>Participants asked to buy the game to run with their own teams.</dd>
-      </dl>
-      <div class="links">
-        <a class="btn primary" href="contact.html">Ask about running it for your team</a>
-      </div>
-    </div>
-  </article>
+<section aria-label="Workshop details" style="padding-top:1rem">
+  <div class="numbers">
+    <div><strong>50</strong><span>participants</span></div>
+    <div><strong>75 min</strong><span>hands-on</span></div>
+    <div><strong>Sold out</strong><span>Future Product Days 2026</span></div>
+  </div>
+  <dl class="rows">
+    <div><dt>The question</dt><dd>How much should an AI agent be allowed to do on its own, and what has to be true before it gets more autonomy?</dd></div>
+    <div><dt>How it works</dt><dd>Teams work through realistic agent scenarios as a game, deciding where each one sits on the ladder and which guardrails it needs before it can move up.</dd></div>
+    <div><dt>Who it's for</dt><dd>Product managers, designers and engineers who are building, or about to build, products with AI agents.</dd></div>
+    <div><dt>What happened next</dt><dd>Participants asked to buy the game to run with their own teams.</dd></div>
+  </dl>
+  <div class="btns"><a class="btn primary" href="contact.html">Ask about running it for your team</a></div>
 </section>
-
 <section aria-labelledby="talks-h">
-  <h2 id="talks-h">Talks</h2>
-  <ol class="timeline">
-    <li>
-      <div class="when">2024</div>
-      <div>
-        <h3>Host and speaker, LEGO Group DevCon, Billund</h3>
+  <div class="section-title"><h2 id="talks-h">Talks</h2></div>
+  <ul class="stories">
+    <li class="story"><div><div>
+        <p class="meta">LEGO Group DevCon, Billund, 2024</p>
+        <h3>From factory meters to the cloud</h3>
         <p>Hosted the internal developer conference for colleagues across Billund, London, Copenhagen and Budapest, and gave a technical talk on bringing factory utility-meter data from IoT Hub into the cloud with Databricks.</p>
       </div>
-    </li>
-  </ol>
+      <div class="side"><span></span><span class="go">Host and speaker</span></div></div></li>
+  </ul>
 </section>
-<section class="cta" aria-labelledby="cta-h">
-  <h2 id="cta-h">Run the workshop with your team</h2>
+<section class="closing" aria-labelledby="closing-h">
+  <h2 id="closing-h">Run the workshop with your team</h2>
   <p>I can facilitate The Autonomy Ladder for product and engineering teams working with AI agents.</p>
-  <div class="links">
-    <a class="btn light" href="contact.html">Get in touch</a>
-  </div>
+  <div class="btns"><a class="btn primary" href="contact.html">Get in touch</a></div>
 </section>
 </main>
-
 <footer class="site-foot">
-  <p>Mahrukh Zulfiqar, 2026. Hand-built and hosted on GitHub Pages.</p>
+  <p>Mahrukh Zulfiqar, Copenhagen</p>
+  <p><a href="https://github.com/mahrukhzulfiqar">GitHub</a></p>
 </footer>
 </div>
-
+<script src="ticker.js" defer></script>
 </body>
 </html>
