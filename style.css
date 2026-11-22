@@ -291,3 +291,6 @@ section[id] { scroll-margin-top: 1rem; }
 .social a.cv-btn:hover { background: #24365c; color: #fff; }
 .all-recs { margin: 0.5rem 0 0; font-weight: 600; }
 figcaption a { color: inherit; }
+.contact-page { padding: 4.5rem 0 3rem; max-width: 46rem; }
+.contact-page h1 { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 0.75rem; }
+.contact-page .contact-list { margin-top: 2.25rem; }
