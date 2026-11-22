@@ -8,13 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 <div class="wrap">
 <header class="site-head">
   <a class="name" href="index.html">Mahrukh Zulfiqar</a>
   <nav aria-label="Main">
+    <a href="index.html#about">About me</a>
     <a href="index.html#experience">Experience</a>
     <a href="index.html#projects">Projects</a>
     <a href="index.html#conferences">Workshops &amp; conferences</a>
@@ -38,6 +39,34 @@
     <img src="img/mahrukh.jpg" alt="Portrait of Mahrukh Zulfiqar" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'initials',textContent:'MZ'}))">
   </div>
 </div>
+
+<section id="about" aria-labelledby="about-h">
+  <div class="section-title"><h2 id="about-h">About me</h2></div>
+  <div class="about">
+    <div class="about-main">
+      <p>I work between stakeholders and engineering, translating business needs into technical requirements and back again, and back again when the first answer wasn't quite right.</p>
+      <p>My background in software and data engineering means I can usually tell early whether a plan is realistic, before anyone has committed to it. I like taking things apart to see how they actually work, so I prototype early where it helps. In one case that saved around 300 hours of engineering time by catching the wrong things before they got built.</p>
+      <p>The road here wasn't straight. I went to school in Denmark, then studied software engineering in Cardiff while Brexit and Covid hit mid-degree. I was rejected by IBM after several rounds of interviews, and told I was too young when I first wanted to move into product management. Each "no" made the next attempt stronger.</p>
+      <p>Outside my day job I mentor people looking for work in tech in Denmark, reviewing CVs and LinkedIn profiles, and I speak about women in tech and building with AI.</p>
+    </div>
+    <dl class="about-facts">
+      <div><dt>Based in</dt><dd>Copenhagen, Denmark</dd></div>
+      <div><dt>Languages</dt><dd>English, Danish, Urdu</dd></div>
+      <div><dt>Volunteering</dt><dd>Vice-President, Cardiff University Cyber Security Society; student mentor; chair of the Student Staff Panel; English teacher with the Danish Red Cross Youth (Ungdommens Røde Kors)</dd></div>
+      <div><dt>Outside work</dt><dd>Running, tennis and family time</dd></div>
+    </dl>
+  </div>
+  <div class="quotes">
+    <figure>
+      <blockquote>She understands the complexity and nuance of integrating systems at varied levels of maturity, and she consistently focuses on designing the data products she owns to be maintainable, scalable, and easy to evolve.</blockquote>
+      <figcaption>Cosmin Catalin Sanda, Senior Data Engineer, on LinkedIn</figcaption>
+    </figure>
+    <figure>
+      <blockquote>Her ability to bridge business and development makes her a valuable person to have on any product team.</blockquote>
+      <figcaption>Nicolas Lykke Iversen, Senior Software Engineer, the LEGO Group, on LinkedIn (translated from Danish)</figcaption>
+    </figure>
+  </div>
+</section>
 
 <section id="experience" aria-labelledby="exp-h">
   <div class="section-title"><h2 id="exp-h">Experience</h2></div>
@@ -83,7 +112,7 @@
       </div>
     </li>
   </ol>
-  <h3 class="cv-sub">Education and certifications</h3>
+  <h3 class="cv-sub">Education</h3>
   <ol class="cv">
     <li>
       <div class="when">2023<span>Graduated</span></div>
@@ -98,18 +127,19 @@
       <div class="what">
         <h3>International Baccalaureate (IB) Diploma</h3>
         <p class="org">EUC Syd, Sønderborg, Denmark</p>
-        
-      </div>
-    </li>
-    <li>
-      <div class="when">Certifications<span></span></div>
-      <div class="what">
-        <h3>Professional Scrum Product Owner I</h3>
-        <p class="org">Scrum.org</p>
-        <ul><li>Plus LinkedIn Learning: Generative AI with large language models, SQL for data engineering, Microsoft Fabric.</li></ul>
       </div>
     </li>
   </ol>
+</section>
+
+<section id="certifications" aria-labelledby="cert-h">
+  <div class="section-title"><h2 id="cert-h">Certifications</h2></div>
+  <ul class="certs">
+    <li><strong>Professional Scrum Product Owner I (PSPO I)</strong><span>Scrum.org, July 2026</span></li>
+    <li><strong>SQL for Data Engineering</strong><span>LinkedIn Learning, December 2025</span></li>
+    <li><strong>Generative AI: Working with Large Language Models</strong><span>LinkedIn Learning</span></li>
+    <li><strong>Learning Microsoft Fabric</strong><span>LinkedIn Learning</span></li>
+  </ul>
 </section>
 
 <section id="projects" aria-labelledby="proj-h">
@@ -148,12 +178,27 @@
         <p>Panelist on the Women in Tech panel, and I led the coordination of the panel at the NordPak Foundation's invitation. I shared how I went from not knowing how to code to becoming a Product Manager at The LEGO Group, including the rejections along the way.</p>
       </div>
       <div class="side"><span class="tag">Panel</span><span class="go">Panelist</span></div></div></li>
-    <li class="story"><a href="workshops.html"><div>
+    <li class="story story-rich"><div>
+      <div>
         <p class="meta">Future Product Days 2026, Copenhagen, 23 September 2026</p>
         <h3>The Autonomy Ladder: how much freedom should you give an AI agent?</h3>
-        <p>Designed and ran a sold-out, 75-minute hands-on workshop for 50 product, design and engineering professionals, pressure-testing real agent designs. No laptops.</p>
+        <p>I designed and ran a sold-out, hands-on workshop for product, design and engineering professionals. No laptops: teams pressure-tested real agent designs against four questions.</p>
+        <ul class="questions">
+          <li>What's the cost of this agent being wrong?</li>
+          <li>Is the action reversible?</li>
+          <li>Where does a human need to stay in the loop?</li>
+          <li>Can your guardrails actually hold?</li>
+        </ul>
+        <div class="mini-numbers">
+          <div><strong>50</strong><span>participants</span></div>
+          <div><strong>75 min</strong><span>hands-on</span></div>
+          <div><strong>Sold out</strong><span>tickets</span></div>
+        </div>
+        <p>Participants asked to buy the game to run with their own teams. I can facilitate it for teams working with AI agents.</p>
+        <div class="btns"><a class="btn" href="workshops.html">See how it works</a><a class="btn primary" href="#contact">Book the workshop</a></div>
       </div>
-      <div class="side"><span class="tag">Workshop</span><span class="go">Workshop host</span></div></a></li>
+      <div class="side"><span class="tag">Workshop</span><span class="go">Workshop host</span></div>
+    </div></li>
     <li class="story"><div><div>
         <p class="meta">TechBBQ 2026, Copenhagen, 27 August 2026</p>
         <h3>Gen Z is here: are you ready to lead the next generation?</h3>
@@ -169,17 +214,7 @@
   </ul>
 </section>
 
-<section id="workshops" aria-labelledby="ws-h">
-  <div class="section-title"><h2 id="ws-h">Run the Autonomy Ladder with your team</h2><a href="workshops.html">Full workshop details</a></div>
-  <p class="lead-sm">The Autonomy Ladder: how much freedom should you give an AI agent? A hands-on, no-laptop workshop where teams pressure-test real agent designs: what it costs if the agent is wrong, whether the action is reversible, where a human stays in the loop, and whether the guardrails hold. First run at Future Product Days, Copenhagen, on 23 September 2026.</p>
-  <div class="numbers">
-    <div><strong>50</strong><span>participants</span></div>
-    <div><strong>75 min</strong><span>hands-on</span></div>
-    <div><strong>Sold out</strong><span>Future Product Days 2026</span></div>
-  </div>
-  <p class="lead-sm">Participants asked to buy the game to run with their own teams. I can facilitate it for product and engineering teams working with AI agents.</p>
-  <div class="btns"><a class="btn" href="workshops.html">See how it works</a><a class="btn primary" href="#contact">Book the workshop</a></div>
-</section>
+
 
 <section id="contact" class="closing" aria-labelledby="contact-h">
   <h2 id="contact-h">Contact me</h2>
