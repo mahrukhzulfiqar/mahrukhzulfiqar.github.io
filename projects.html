@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects, Mahrukh Zulfiqar</title>
+<meta name="description" content="Products built end to end, with the research, decisions and results.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site-head">
+  <a class="name" href="index.html">Mahrukh Zulfiqar</a>
+  <nav aria-label="Main">
+    <a href="projects.html" aria-current="page">Projects</a>
+    <a href="workshops.html">Workshops</a>
+    <a href="how-i-work.html">How I work</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="page-head">
+  <h1>Projects</h1>
+  <p class="intro">Products I build in the open to test ideas end to end: a real problem, a working product, and the decisions written down.</p>
+</div>
+
+<section class="first" aria-label="Project list">
+  <article class="feature">
+    <div class="feature-text">
+      <span class="status is-live">Live product</span>
+      <h2 class="h3">GridWise</h2>
+      <p class="lede">Tells EV owners in Denmark when to charge for the lowest price and CO2, using Energinet's open data. An AI agent explains the answer; tested code does the maths.</p>
+      <dl class="highlights">
+        <dt>Problem</dt><dd>Prices change every 15 minutes, CO2 shifts with the wind and grid tariffs peak in the evening. The data is public but hard to use.</dd>
+        <dt>Key decision</dt><dd>Keep every number out of the language model, so answers are reproducible and testable.</dd>
+        <dt>What changed my mind</dt><dd>Research showed many EV owners already charge at night and charger apps already automate it, so I narrowed the target user.</dd>
+        <dt>After launch</dt><dd>The data provider added rate limits and the app was blocked within seconds. I redesigned data access the same day.</dd>
+      </dl>
+      <div class="links">
+        <a class="btn primary" href="gridwise.html">Read the case study</a>
+        <a class="btn" href="https://gridwise-dk.streamlit.app">Try the demo</a>
+        <a class="btn ghost" href="https://github.com/mahrukhzulfiqar/gridwise">Code and product docs</a>
+      </div>
+    </div>
+    <a class="feature-shot" href="gridwise.html" tabindex="-1" aria-hidden="true">
+      <img src="img/gridwise-card.png" alt="" width="1040" height="883" loading="lazy">
+    </a>
+  </article>
+
+  <div class="pair">
+    <article class="card planned">
+      <span class="status">Coming next</span>
+      <h2 class="h3">JobLens DK</h2>
+      <p>Reads a Danish or English job ad and pulls out what it really asks for: years of experience, whether Danish is required, must-haves versus nice-to-haves. Planned, with a small evaluation set to measure how often it gets it right.</p>
+    </article>
+    <article class="card">
+      <span class="status">At work</span>
+      <h2 class="h3">Internal AI assistant, The LEGO Group</h2>
+      <p>Scoped and shipped a retrieval-augmented assistant end to end to cut repeated onboarding questions, and validated it at 85% answer accuracy on real team questions before rollout.</p>
+    </article>
+  </div>
+</section>
+<section class="cta" aria-labelledby="cta-h">
+  <h2 id="cta-h">Want to talk about a project?</h2>
+  <p>I'm happy to walk through any of these in more detail, including what I would do differently.</p>
+  <div class="links">
+    <a class="btn light" href="contact.html">Get in touch</a>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <p>Mahrukh Zulfiqar, 2026. Hand-built and hosted on GitHub Pages.</p>
+</footer>
+</div>
+
+</body>
+</html>

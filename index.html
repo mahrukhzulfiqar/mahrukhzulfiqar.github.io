@@ -15,10 +15,10 @@
 <header class="site-head">
   <a class="name" href="index.html">Mahrukh Zulfiqar</a>
   <nav aria-label="Main">
-    <a href="#work">Work</a>
-    <a href="#how">How I work</a>
-    <a href="#experience">Experience</a>
-    <a class="nav-cta" href="#contact">Contact</a>
+    <a href="projects.html">Projects</a>
+    <a href="workshops.html">Workshops</a>
+    <a href="how-i-work.html">How I work</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
   </nav>
 </header>
 
@@ -30,8 +30,8 @@
     <p class="intro">I turn data and AI ideas into products people actually use, from discovery to production. I started as a Data Engineer at The LEGO Group and moved into product management, so I can tell early when a plan is technically unrealistic.</p>
     <p class="intro">This site shows how I think: the problem, the decisions, and what changed when real data pushed back.</p>
     <div class="links">
-      <a class="btn primary" href="#work">See my work</a>
-      <a class="btn" href="#contact">Get in touch</a>
+      <a class="btn primary" href="projects.html">See my projects</a>
+      <a class="btn" href="contact.html">Get in touch</a>
     </div>
   </div>
   <aside class="live" aria-labelledby="live-h">
@@ -42,109 +42,27 @@
   </aside>
 </div>
 
-<section id="work" aria-labelledby="work-h">
-  <h2 id="work-h">Selected work</h2>
-
-  <article class="feature">
-    <div class="feature-text">
-      <span class="status is-live">Live product</span>
-      <h3>GridWise</h3>
-      <p class="lede">Tells EV owners in Denmark when to charge for the lowest price and CO2, using Energinet's open data. An AI agent explains the answer; tested code does the maths.</p>
-      <dl class="highlights">
-        <dt>Key decision</dt><dd>Keep every number out of the language model, so answers are reproducible and testable.</dd>
-        <dt>What changed my mind</dt><dd>Research showed many EV owners already charge at night, so I narrowed the target user.</dd>
-        <dt>After launch</dt><dd>The data provider added rate limits; I redesigned data access the same day.</dd>
-      </dl>
-      <div class="links">
-        <a class="btn primary" href="gridwise.html">Read the case study</a>
-        <a class="btn" href="https://gridwise-dk.streamlit.app">Try the demo</a>
-        <a class="btn ghost" href="https://github.com/mahrukhzulfiqar/gridwise">Code</a>
-      </div>
-    </div>
-    <a class="feature-shot" href="gridwise.html" tabindex="-1" aria-hidden="true">
-      <img src="img/gridwise-card.png" alt="" width="1040" height="883" loading="lazy">
+<section aria-labelledby="start-h">
+  <h2 id="start-h">Start here</h2>
+  <div class="tiles">
+    <a class="tile" href="projects.html">
+      <h3>Projects</h3>
+      <p>GridWise, a live AI product on Danish energy data, with the full product story: research, decisions and what changed after launch.</p>
+      <span class="tile-go">View projects</span>
     </a>
-  </article>
-
-  <div class="pair">
-    <article class="card">
-      <span class="status">Workshop</span>
-      <h3>The Autonomy Ladder</h3>
-      <p>A hands-on workshop I designed and hosted at Future Product Days 2026 in Copenhagen, on designing guardrails for agentic AI. Product, design and engineering people worked through how much autonomy an AI agent should get, and what has to be true before it gets more.</p>
-    </article>
-    <article class="card planned">
-      <span class="status">Coming next</span>
-      <h3>JobLens DK</h3>
-      <p>Reads a Danish or English job ad and pulls out what it really asks for: years of experience, whether Danish is required, must-haves versus nice-to-haves. Planned, with a small evaluation set to measure how often it gets it right.</p>
-    </article>
+    <a class="tile" href="workshops.html">
+      <h3>Workshops</h3>
+      <p>The Autonomy Ladder, a sold-out workshop on guardrails for agentic AI, and talks I have given.</p>
+      <span class="tile-go">View workshops</span>
+    </a>
+    <a class="tile" href="how-i-work.html">
+      <h3>How I work</h3>
+      <p>The principles I use as a product manager, and the experience behind them.</p>
+      <span class="tile-go">Read how I work</span>
+    </a>
   </div>
 </section>
 
-<section id="how" aria-labelledby="how-h">
-  <h2 id="how-h">How I work</h2>
-  <div class="principles">
-    <div class="principle">
-      <h3>Prototype before asking for engineering time</h3>
-      <p>At The LEGO Group I built and tested generative AI prototypes with engineering before anything went on the roadmap. Only the strongest use case made it in.</p>
-    </div>
-    <div class="principle">
-      <h3>Write the decision down</h3>
-      <p>Every project gets a decision log: what we chose, why, and what we gave up. <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/decision-log.md">GridWise has ten</a>.</p>
-    </div>
-    <div class="principle">
-      <h3>Let evidence change the plan</h3>
-      <p>Discovery with stakeholders reprioritised half of a platform roadmap before engineering started. On GridWise, research narrowed the target user after launch.</p>
-    </div>
-    <div class="principle">
-      <h3>Measure value, not activity</h3>
-      <p>Success is what the user gains, like kroner saved per charging session, not clicks or time in the app.</p>
-    </div>
-  </div>
-</section>
-
-<section id="experience" aria-labelledby="exp-h">
-  <h2 id="exp-h">Experience</h2>
-  <ol class="timeline">
-    <li>
-      <div class="when">2026</div>
-      <div>
-        <h3>Product Manager, The LEGO Group</h3>
-        <p>Led delivery of a global investment-planning platform used by 2,500+ people, with a team of eight engineers and consultants. Discovery with stakeholders reprioritised half of the initial roadmap before engineering time was spent on it.</p>
-      </div>
-    </li>
-    <li>
-      <div class="when">2023 to 2025</div>
-      <div>
-        <h3>Data Engineer, The LEGO Group</h3>
-        <p class="note">De facto Product Manager for my own initiatives from 2024.</p>
-        <p>Scoped and shipped an internal AI assistant (retrieval-augmented) end to end, validated at 85% answer accuracy before rollout. Led data pipelines for an ESG and energy-reporting platform on AWS, Azure and Databricks.</p>
-      </div>
-    </li>
-    <li>
-      <div class="when">2022 to 2023</div>
-      <div>
-        <h3>Junior Product Owner (part-time), Admiral, Cardiff</h3>
-        <p>Turned 20+ customer interviews into five roadmap initiatives for the digital customer experience squad.</p>
-      </div>
-    </li>
-    <li>
-      <div class="when">2023</div>
-      <div>
-        <h3>BSc Applied Software Engineering, Cardiff University</h3>
-        <p>Also: Professional Scrum Product Owner I.</p>
-      </div>
-    </li>
-  </ol>
-</section>
-
-<section id="contact" class="cta" aria-labelledby="contact-h">
-  <h2 id="contact-h">Let's talk</h2>
-  <p>I'm looking for Product Manager and Product Owner roles in Copenhagen and Zealand, especially in data, AI, platforms and energy.</p>
-  <div class="links">
-    <a class="btn light" href="https://github.com/mahrukhzulfiqar">GitHub</a>
-    <!-- LINKEDIN -->
-  </div>
-</section>
 </main>
 
 <footer class="site-foot">
