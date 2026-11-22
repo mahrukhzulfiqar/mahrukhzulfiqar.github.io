@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GridWise case study, Mahrukh Zulfiqar</title>
+<meta name="description" content="How I scoped, built and changed GridWise, an AI agent for EV charging in Denmark.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site-head">
+  <a class="name" href="index.html">Mahrukh Zulfiqar</a>
+  <nav aria-label="Main">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="article">
+  <p><a href="index.html">Back to all work</a></p>
+  <h1>GridWise: when should I charge my EV tonight?</h1>
+  <p class="sub">A small agentic AI product on Energinet's open data. Built and shipped in November 2026, then changed by what real data and research showed.</p>
+  <div class="links">
+    <a class="btn primary" href="https://gridwise-dk.streamlit.app">Try the live demo</a>
+    <a class="btn" href="https://github.com/mahrukhzulfiqar/gridwise">See the code and product docs</a>
+  </div>
+
+  <h2>The problem</h2>
+  <p>Since October 2025, Danish day-ahead electricity prices change every 15 minutes. The CO2 intensity of the grid moves with the wind, and grid tariffs are highest between 17:00 and 21:00. An EV is the biggest flexible load in most homes, so timing matters. The data to time it well is free and public, but it sits in an API that almost nobody will query.</p>
+  <figure class="day wide">
+    <svg viewBox="0 0 720 120" role="img" aria-labelledby="dayTitle"><title id="dayTitle">Grid tariff over 24 hours: lowest 00:00 to 06:00, highest 17:00 to 21:00</title><rect x="0.0" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="30.2" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="60.3" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="90.5" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="120.7" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="150.8" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="181.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="211.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="241.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="271.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="301.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="331.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="362.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="392.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="422.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="452.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="482.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect class="peak" x="512.8" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="543.0" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="573.2" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="603.3" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect x="633.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="663.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="693.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><text x="0.0" y="116" font-size="12" fill="var(--ink-soft)">00:00</text><text x="181.0" y="116" font-size="12" fill="var(--ink-soft)">06:00</text><text x="512.8" y="116" font-size="12" fill="var(--ink-soft)">17:00</text><text x="633.5" y="116" font-size="12" fill="var(--ink-soft)">21:00</text></svg>
+    <figcaption>Zealand grid tariff over a winter day (Radius, incl. VAT from 1 Oct 2025): 12 øre/kWh at night, 37 during the day, 110 at the evening peak.</figcaption>
+  </figure>
+
+  <h2>Who it's for, and how that changed</h2>
+  <p>I started with a broad assumption: most EV owners plug in when they get home and charge at the evening peak. Before building more, I tested that against published evidence.</p>
+  <ul>
+    <li>Radius reported that EV owners had already moved much of their charging to the night after the 2023 tariff change.</li>
+    <li>About two thirds of Danish electricity agreements are variable-price, so timing helps most people, but not everyone.</li>
+    <li>Several charger apps already schedule charging by price automatically.</li>
+  </ul>
+  <p>So I narrowed the user: <strong>households with a basic charger and no smart charging app</strong>, plus <strong>developers and energy teams</strong> who want price and CO2 planning as tools for their own AI agents. <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/desk-research.md">Full desk research with sources</a>.</p>
+
+  <h2>What I built</h2>
+  <p>A planner that finds the best continuous charging window between plug-in and ready-by, optimised for price, CO2 or both, and compares it with charging straight away. It is exposed as tools through an MCP server, so a Claude agent can answer plain-language questions in English or Danish, and the same tools work in any MCP client.</p>
+  <figure class="wide">
+    <img src="img/gridwise-planner.png" alt="GridWise charging planner showing a warning that tomorrow's prices are not yet published, a recommended window of 18:15 to 22:00, and a price chart" width="1040" height="1210" style="width:100%;height:auto;border:1px solid var(--line);border-radius:8px">
+    <figcaption>The live planner on 22 November 2026, before the next day's prices were published.</figcaption>
+  </figure>
+
+  <h2>Decisions that shaped it</h2>
+  <table>
+    <thead><tr><th>Decision</th><th>Why</th><th>Trade-off</th></tr></thead>
+    <tbody>
+      <tr><td>The model talks, the code calculates</td><td>People act on money and CO2 numbers, so every number must be reproducible and tested. Each tool call is shown to the user.</td><td>Less flexible for unusual questions</td></tr>
+      <tr><td>Ship spot price only, and say so in every answer</td><td>A working, trusted loop first, with the limitation visible</td><td>Savings differ from the real bill near the tariff peak</td></tr>
+      <tr><td>One continuous charging window</td><td>Matches how people and chargers schedule charging</td><td>Leaves a small saving on the table some nights</td></tr>
+      <tr><td>A planner that works without AI</td><td>Anyone can try it free, and it proves the value is in the planner, not the chat</td><td>Chat is optional</td></tr>
+    </tbody>
+  </table>
+  <p><a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/decision-log.md">All ten decisions in the decision log</a>.</p>
+
+  <h2>What happened after launch</h2>
+  <p>The first live run surfaced two problems no test had caught.</p>
+  <blockquote><p><strong>The data provider changed its rules.</strong> Energinet had introduced per-dataset rate limits, and the app was blocked within seconds. I redesigned data access the same day: one call per dataset instead of one per day, a 15-minute cache, and respecting the provider's wait time.</p></blockquote>
+  <blockquote><p><strong>A correct answer can still mislead.</strong> Before tomorrow's prices are published around 13:00, the planner recommended the best slot of the evening, which is the peak. It now says clearly what it can and cannot see yet, as in the screenshot above.</p></blockquote>
+
+  <h2>How I'd measure success</h2>
+  <p><strong>North star:</strong> saving per charging session compared with charging straight away, in kroner and kg CO2. It measures value to the user, not time spent in the app. <strong>Guardrail:</strong> every number in an answer comes from a tool call.</p>
+
+  <h2>What's next</h2>
+  <ul>
+    <li>All-in price: grid tariff per grid company, electricity tax and VAT, so savings match the bill</li>
+    <li>Interviews with five EV owners in the refined segment (<a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/discovery-plan.md">discovery plan</a>)</li>
+    <li>An evaluation set of labelled questions for the agent</li>
+  </ul>
+
+  <h2>What I learned</h2>
+  <p>Scoping to one job made every later decision easier. Keeping the maths out of the model made the AI part trustworthy. And the most useful product work happened after launch, when real data and published evidence pushed back on my assumptions.</p>
+</main>
+<footer id="contact">
+  <p>Looking for Product Manager and Product Owner roles in Copenhagen and Zealand.</p>
+  <div class="contact">
+    <a href="https://github.com/mahrukhzulfiqar">GitHub</a>
+    <!-- LINKEDIN -->
+  </div>
+</footer>
+</div>
+</body>
+</html>

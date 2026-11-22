@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mahrukh Zulfiqar, Product Manager</title>
+<meta name="description" content="Product Manager with a data engineering background. Data and AI products, from discovery to production. Copenhagen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site-head">
+  <a class="name" href="index.html">Mahrukh Zulfiqar</a>
+  <nav aria-label="Main">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero">
+  <h1>Product manager who builds.</h1>
+  <p>I turn data and AI ideas into products people actually use, from discovery to production. I started as a Data Engineer at The LEGO Group and moved into product management, so I can tell early when a plan is technically unrealistic.</p>
+  <p>This site shows how I think: the problem, the decisions, and what changed when real data and real users pushed back.</p>
+  <ul class="facts">
+    <li>Copenhagen</li>
+    <li>Product Manager and Product Owner</li>
+    <li>Data, AI and platforms</li>
+  </ul>
+</div>
+
+<section id="work" aria-labelledby="work-h">
+  <h2 id="work-h">Selected work</h2>
+
+  <article class="project">
+    <span class="status live">Live</span>
+    <h3>GridWise</h3>
+    <p class="lede">Tells EV owners in Denmark when to charge for the lowest price and CO2, using Energinet's open data. An AI agent explains the answer; tested code does the maths.</p>
+    <figure class="day">
+      <svg viewBox="0 0 720 120" role="img" aria-labelledby="dayTitle"><title id="dayTitle">Grid tariff over 24 hours: lowest 00:00 to 06:00, highest 17:00 to 21:00</title><rect x="0.0" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="30.2" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="60.3" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="90.5" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="120.7" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="150.8" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="181.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="211.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="241.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="271.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="301.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="331.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="362.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="392.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="422.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="452.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="482.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect class="peak" x="512.8" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="543.0" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="573.2" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="603.3" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect x="633.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="663.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="693.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><text x="0.0" y="116" font-size="12" fill="var(--ink-soft)">00:00</text><text x="181.0" y="116" font-size="12" fill="var(--ink-soft)">06:00</text><text x="512.8" y="116" font-size="12" fill="var(--ink-soft)">17:00</text><text x="633.5" y="116" font-size="12" fill="var(--ink-soft)">21:00</text></svg>
+      <figcaption>What a plan has to work around: the Zealand grid tariff costs about nine times more at 17:00 to 21:00 than at night (Radius winter tariff, incl. VAT).</figcaption>
+    </figure>
+    <dl>
+      <dt>Problem</dt><dd>Prices change every 15 minutes, CO2 shifts with the wind and tariffs peak in the evening. The data is public but hard to use.</dd>
+      <dt>Key decision</dt><dd>Keep every number out of the language model. The AI picks a tool and explains; a tested planner calculates, so answers are reproducible.</dd>
+      <dt>What changed my mind</dt><dd>Desk research showed many EV owners already charge at night and charger apps already automate it. I narrowed the target user and made all-in pricing a must.</dd>
+      <dt>After launch</dt><dd>The data provider introduced rate limits and the app was blocked within seconds. I redesigned data access the same day.</dd>
+    </dl>
+    <div class="links">
+      <a class="btn primary" href="gridwise.html">Read the case study</a>
+      <a class="btn" href="https://gridwise-dk.streamlit.app">Try the live demo</a>
+      <a class="btn" href="https://github.com/mahrukhzulfiqar/gridwise">See the code</a>
+    </div>
+  </article>
+
+  <article class="project">
+    <span class="status">Workshop</span>
+    <h3>The Autonomy Ladder</h3>
+    <p class="lede">A hands-on workshop I designed and hosted at Future Product Days 2026 in Copenhagen, on designing guardrails for agentic AI. Product, design and engineering people worked through how much autonomy an AI agent should get, and what has to be true before it gets more.</p>
+  </article>
+
+  <article class="project planned">
+    <span class="status">Next</span>
+    <h3>JobLens DK</h3>
+    <p class="lede">Reads a Danish or English job ad and pulls out what it really asks for: years of experience, whether Danish is required, must-haves versus nice-to-haves. Planned, with a small evaluation set to measure how often it gets it right.</p>
+  </article>
+</section>
+
+<section id="experience" aria-labelledby="exp-h">
+  <h2 id="exp-h">Experience</h2>
+  <ul class="work">
+    <li>
+      <div class="role">Product Manager, The LEGO Group</div>
+      <div class="when">2026</div>
+      <p>Led delivery of a global investment-planning platform used by 2,500+ people, with a team of eight engineers and consultants. Discovery with stakeholders reprioritised half of the initial roadmap before engineering time was spent on it.</p>
+    </li>
+    <li>
+      <div class="role">Data Engineer, The LEGO Group</div>
+      <div class="when">2023 to 2025, de facto Product Manager for my initiatives from 2024</div>
+      <p>Scoped and shipped an internal AI assistant (retrieval-augmented) end to end, validated at 85% answer accuracy before rollout. Led data pipelines for an ESG and energy-reporting platform on AWS, Azure and Databricks.</p>
+    </li>
+    <li>
+      <div class="role">Junior Product Owner (part-time), Admiral</div>
+      <div class="when">2022 to 2023, Cardiff</div>
+      <p>Turned 20+ customer interviews into five roadmap initiatives for the digital customer experience squad.</p>
+    </li>
+  </ul>
+  <p class="wide">BSc Applied Software Engineering, Cardiff University. Professional Scrum Product Owner I.</p>
+</section>
+</main>
+<footer id="contact">
+  <p>Looking for Product Manager and Product Owner roles in Copenhagen and Zealand.</p>
+  <div class="contact">
+    <a href="https://github.com/mahrukhzulfiqar">GitHub</a>
+    <!-- LINKEDIN -->
+  </div>
+</footer>
+</div>
+</body>
+</html>
