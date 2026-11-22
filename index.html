@@ -15,90 +15,208 @@
 <header class="site-head">
   <a class="name" href="index.html">Mahrukh Zulfiqar</a>
   <nav aria-label="Main">
-    <a href="index.html#work">Work</a>
-    <a href="index.html#experience">Experience</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="#work">Work</a>
+    <a href="#how">How I work</a>
+    <a href="#experience">Experience</a>
+    <a class="nav-cta" href="#contact">Contact</a>
   </nav>
 </header>
 
 <main>
 <div class="hero">
-  <h1>Product manager who builds.</h1>
-  <p>I turn data and AI ideas into products people actually use, from discovery to production. I started as a Data Engineer at The LEGO Group and moved into product management, so I can tell early when a plan is technically unrealistic.</p>
-  <p>This site shows how I think: the problem, the decisions, and what changed when real data and real users pushed back.</p>
-  <ul class="facts">
-    <li>Copenhagen</li>
-    <li>Product Manager and Product Owner</li>
-    <li>Data, AI and platforms</li>
-  </ul>
+  <div class="hero-text">
+    <p class="kicker">Product Manager, data and AI, Copenhagen</p>
+    <h1>Product manager who builds.</h1>
+    <p class="intro">I turn data and AI ideas into products people actually use, from discovery to production. I started as a Data Engineer at The LEGO Group and moved into product management, so I can tell early when a plan is technically unrealistic.</p>
+    <p class="intro">This site shows how I think: the problem, the decisions, and what changed when real data pushed back.</p>
+    <div class="links">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <aside class="live" aria-labelledby="live-h">
+    <h2 id="live-h"><span class="dot" aria-hidden="true"></span>If you charged an EV in Copenhagen now</h2>
+    <p class="live-answer" id="live-answer">Checking Energinet's prices…</p>
+    <figure class="live-chart" id="live-chart" aria-hidden="true"></figure>
+    <p class="live-note" id="live-note">Live day-ahead spot prices for East Denmark, from Energinet's open data. The cheapest four-hour window is picked by the same logic as <a href="gridwise.html">GridWise</a>.</p>
+  </aside>
 </div>
 
 <section id="work" aria-labelledby="work-h">
   <h2 id="work-h">Selected work</h2>
 
-  <article class="project">
-    <span class="status live">Live</span>
-    <h3>GridWise</h3>
-    <p class="lede">Tells EV owners in Denmark when to charge for the lowest price and CO2, using Energinet's open data. An AI agent explains the answer; tested code does the maths.</p>
-    <figure class="day">
-      <svg viewBox="0 0 720 120" role="img" aria-labelledby="dayTitle"><title id="dayTitle">Grid tariff over 24 hours: lowest 00:00 to 06:00, highest 17:00 to 21:00</title><rect x="0.0" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="30.2" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="60.3" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="90.5" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="120.7" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="150.8" y="87.8" width="26.2" height="10.2" rx="2" fill="var(--night)"/><rect x="181.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="211.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="241.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="271.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="301.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="331.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="362.0" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="392.2" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="422.3" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="452.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="482.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect class="peak" x="512.8" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="543.0" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="573.2" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect class="peak" x="603.3" y="6.0" width="26.2" height="92.0" rx="2" fill="var(--amber)"/><rect x="633.5" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="663.7" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><rect x="693.8" y="67.3" width="26.2" height="30.7" rx="2" fill="var(--ink)" opacity="0.35"/><text x="0.0" y="116" font-size="12" fill="var(--ink-soft)">00:00</text><text x="181.0" y="116" font-size="12" fill="var(--ink-soft)">06:00</text><text x="512.8" y="116" font-size="12" fill="var(--ink-soft)">17:00</text><text x="633.5" y="116" font-size="12" fill="var(--ink-soft)">21:00</text></svg>
-      <figcaption>What a plan has to work around: the Zealand grid tariff costs about nine times more at 17:00 to 21:00 than at night (Radius winter tariff, incl. VAT).</figcaption>
-    </figure>
-    <dl>
-      <dt>Problem</dt><dd>Prices change every 15 minutes, CO2 shifts with the wind and tariffs peak in the evening. The data is public but hard to use.</dd>
-      <dt>Key decision</dt><dd>Keep every number out of the language model. The AI picks a tool and explains; a tested planner calculates, so answers are reproducible.</dd>
-      <dt>What changed my mind</dt><dd>Desk research showed many EV owners already charge at night and charger apps already automate it. I narrowed the target user and made all-in pricing a must.</dd>
-      <dt>After launch</dt><dd>The data provider introduced rate limits and the app was blocked within seconds. I redesigned data access the same day.</dd>
-    </dl>
-    <div class="links">
-      <a class="btn primary" href="gridwise.html">Read the case study</a>
-      <a class="btn" href="https://gridwise-dk.streamlit.app">Try the live demo</a>
-      <a class="btn" href="https://github.com/mahrukhzulfiqar/gridwise">See the code</a>
+  <article class="feature">
+    <div class="feature-text">
+      <span class="status is-live">Live product</span>
+      <h3>GridWise</h3>
+      <p class="lede">Tells EV owners in Denmark when to charge for the lowest price and CO2, using Energinet's open data. An AI agent explains the answer; tested code does the maths.</p>
+      <dl class="highlights">
+        <dt>Key decision</dt><dd>Keep every number out of the language model, so answers are reproducible and testable.</dd>
+        <dt>What changed my mind</dt><dd>Research showed many EV owners already charge at night, so I narrowed the target user.</dd>
+        <dt>After launch</dt><dd>The data provider added rate limits; I redesigned data access the same day.</dd>
+      </dl>
+      <div class="links">
+        <a class="btn primary" href="gridwise.html">Read the case study</a>
+        <a class="btn" href="https://gridwise-dk.streamlit.app">Try the demo</a>
+        <a class="btn ghost" href="https://github.com/mahrukhzulfiqar/gridwise">Code</a>
+      </div>
     </div>
+    <a class="feature-shot" href="gridwise.html" tabindex="-1" aria-hidden="true">
+      <img src="img/gridwise-card.png" alt="" width="1040" height="883" loading="lazy">
+    </a>
   </article>
 
-  <article class="project">
-    <span class="status">Workshop</span>
-    <h3>The Autonomy Ladder</h3>
-    <p class="lede">A hands-on workshop I designed and hosted at Future Product Days 2026 in Copenhagen, on designing guardrails for agentic AI. Product, design and engineering people worked through how much autonomy an AI agent should get, and what has to be true before it gets more.</p>
-  </article>
+  <div class="pair">
+    <article class="card">
+      <span class="status">Workshop</span>
+      <h3>The Autonomy Ladder</h3>
+      <p>A hands-on workshop I designed and hosted at Future Product Days 2026 in Copenhagen, on designing guardrails for agentic AI. Product, design and engineering people worked through how much autonomy an AI agent should get, and what has to be true before it gets more.</p>
+    </article>
+    <article class="card planned">
+      <span class="status">Coming next</span>
+      <h3>JobLens DK</h3>
+      <p>Reads a Danish or English job ad and pulls out what it really asks for: years of experience, whether Danish is required, must-haves versus nice-to-haves. Planned, with a small evaluation set to measure how often it gets it right.</p>
+    </article>
+  </div>
+</section>
 
-  <article class="project planned">
-    <span class="status">Next</span>
-    <h3>JobLens DK</h3>
-    <p class="lede">Reads a Danish or English job ad and pulls out what it really asks for: years of experience, whether Danish is required, must-haves versus nice-to-haves. Planned, with a small evaluation set to measure how often it gets it right.</p>
-  </article>
+<section id="how" aria-labelledby="how-h">
+  <h2 id="how-h">How I work</h2>
+  <div class="principles">
+    <div class="principle">
+      <h3>Prototype before asking for engineering time</h3>
+      <p>At The LEGO Group I built and tested generative AI prototypes with engineering before anything went on the roadmap. Only the strongest use case made it in.</p>
+    </div>
+    <div class="principle">
+      <h3>Write the decision down</h3>
+      <p>Every project gets a decision log: what we chose, why, and what we gave up. <a href="https://github.com/mahrukhzulfiqar/gridwise/blob/main/product/decision-log.md">GridWise has ten</a>.</p>
+    </div>
+    <div class="principle">
+      <h3>Let evidence change the plan</h3>
+      <p>Discovery with stakeholders reprioritised half of a platform roadmap before engineering started. On GridWise, research narrowed the target user after launch.</p>
+    </div>
+    <div class="principle">
+      <h3>Measure value, not activity</h3>
+      <p>Success is what the user gains, like kroner saved per charging session, not clicks or time in the app.</p>
+    </div>
+  </div>
 </section>
 
 <section id="experience" aria-labelledby="exp-h">
   <h2 id="exp-h">Experience</h2>
-  <ul class="work">
+  <ol class="timeline">
     <li>
-      <div class="role">Product Manager, The LEGO Group</div>
       <div class="when">2026</div>
-      <p>Led delivery of a global investment-planning platform used by 2,500+ people, with a team of eight engineers and consultants. Discovery with stakeholders reprioritised half of the initial roadmap before engineering time was spent on it.</p>
+      <div>
+        <h3>Product Manager, The LEGO Group</h3>
+        <p>Led delivery of a global investment-planning platform used by 2,500+ people, with a team of eight engineers and consultants. Discovery with stakeholders reprioritised half of the initial roadmap before engineering time was spent on it.</p>
+      </div>
     </li>
     <li>
-      <div class="role">Data Engineer, The LEGO Group</div>
-      <div class="when">2023 to 2025, de facto Product Manager for my initiatives from 2024</div>
-      <p>Scoped and shipped an internal AI assistant (retrieval-augmented) end to end, validated at 85% answer accuracy before rollout. Led data pipelines for an ESG and energy-reporting platform on AWS, Azure and Databricks.</p>
+      <div class="when">2023 to 2025</div>
+      <div>
+        <h3>Data Engineer, The LEGO Group</h3>
+        <p class="note">De facto Product Manager for my own initiatives from 2024.</p>
+        <p>Scoped and shipped an internal AI assistant (retrieval-augmented) end to end, validated at 85% answer accuracy before rollout. Led data pipelines for an ESG and energy-reporting platform on AWS, Azure and Databricks.</p>
+      </div>
     </li>
     <li>
-      <div class="role">Junior Product Owner (part-time), Admiral</div>
-      <div class="when">2022 to 2023, Cardiff</div>
-      <p>Turned 20+ customer interviews into five roadmap initiatives for the digital customer experience squad.</p>
+      <div class="when">2022 to 2023</div>
+      <div>
+        <h3>Junior Product Owner (part-time), Admiral, Cardiff</h3>
+        <p>Turned 20+ customer interviews into five roadmap initiatives for the digital customer experience squad.</p>
+      </div>
     </li>
-  </ul>
-  <p class="wide">BSc Applied Software Engineering, Cardiff University. Professional Scrum Product Owner I.</p>
+    <li>
+      <div class="when">2023</div>
+      <div>
+        <h3>BSc Applied Software Engineering, Cardiff University</h3>
+        <p>Also: Professional Scrum Product Owner I.</p>
+      </div>
+    </li>
+  </ol>
 </section>
-</main>
-<footer id="contact">
-  <p>Looking for Product Manager and Product Owner roles in Copenhagen and Zealand.</p>
-  <div class="contact">
-    <a href="https://github.com/mahrukhzulfiqar">GitHub</a>
+
+<section id="contact" class="cta" aria-labelledby="contact-h">
+  <h2 id="contact-h">Let's talk</h2>
+  <p>I'm looking for Product Manager and Product Owner roles in Copenhagen and Zealand, especially in data, AI, platforms and energy.</p>
+  <div class="links">
+    <a class="btn light" href="https://github.com/mahrukhzulfiqar">GitHub</a>
     <!-- LINKEDIN -->
   </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <p>Mahrukh Zulfiqar, 2026. Hand-built and hosted on GitHub Pages.</p>
 </footer>
 </div>
+<script>
+(() => {
+  const TZ = "Europe/Copenhagen", HOURS = 4, SLOTS = HOURS * 4, CACHE_MIN = 20;
+  const answer = document.getElementById("live-answer");
+  const chart = document.getElementById("live-chart");
+  const note = document.getElementById("live-note");
+  const dkDate = (days) => new Intl.DateTimeFormat("sv-SE", { timeZone: TZ }).format(new Date(Date.now() + days * 864e5));
+  const fmt = (d, opts) => new Intl.DateTimeFormat("en-GB", { timeZone: TZ, ...opts }).format(d);
+  const hm = (d) => fmt(d, { hour: "2-digit", minute: "2-digit" });
+  const dayHm = (d) => fmt(d, { weekday: "short" }) + " " + hm(d);
+
+  async function load() {
+    try {
+      const c = JSON.parse(localStorage.getItem("gw-live") || "null");
+      if (c && Date.now() - c.ts < CACHE_MIN * 6e4) return c.rows;
+    } catch (e) {}
+    const url = "https://api.energidataservice.dk/dataset/DayAheadPrices?start=" + dkDate(0) + "&end=" + dkDate(2) +
+      "&filter=" + encodeURIComponent('{"PriceArea":["DK2"]}') + "&sort=TimeUTC%20asc&limit=500";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const rows = (await res.json()).records
+      .filter((r) => r.DayAheadPriceDKK != null)
+      .map((r) => [r.TimeUTC, r.DayAheadPriceDKK / 1000]);
+    try { localStorage.setItem("gw-live", JSON.stringify({ ts: Date.now(), rows })); } catch (e) {}
+    return rows;
+  }
+
+  function render(rows) {
+    const now = Date.now() - 15 * 6e4;
+    const pts = rows.map(([t, p]) => ({ t: new Date(t + "Z"), p })).filter((x) => x.t.getTime() >= now).slice(0, 36 * 4);
+    if (pts.length < SLOTS) throw new Error("not enough data");
+    let best = 0, bestAvg = Infinity;
+    for (let i = 0; i + SLOTS <= pts.length; i++) {
+      const avg = pts.slice(i, i + SLOTS).reduce((a, x) => a + x.p, 0) / SLOTS;
+      if (avg < bestAvg) { bestAvg = avg; best = i; }
+    }
+    const start = pts[best].t, end = new Date(pts[best + SLOTS - 1].t.getTime() + 15 * 6e4);
+    const peak = pts.reduce((a, x) => (x.p > a.p ? x : a));
+    answer.innerHTML = "Charge <strong>" + dayHm(start) + " to " + hm(end) + "</strong>. Average spot price " +
+      bestAvg.toFixed(2) + " kr/kWh, against " + peak.p.toFixed(2) + " at the peak (" + dayHm(peak.t) + ").";
+
+    const W = 480, H = 120, n = pts.length, bw = W / n;
+    const lo = Math.min(0, ...pts.map((x) => x.p)), hi = Math.max(...pts.map((x) => x.p));
+    let bars = "";
+    pts.forEach((x, i) => {
+      const h = 4 + ((x.p - lo) / (hi - lo || 1)) * (H - 30);
+      const inWin = i >= best && i < best + SLOTS;
+      bars += '<rect x="' + (i * bw).toFixed(1) + '" y="' + (H - 18 - h).toFixed(1) + '" width="' + Math.max(1, bw - 1).toFixed(1) +
+        '" height="' + h.toFixed(1) + '" class="' + (inWin ? "win" : "bar") + '"/>';
+    });
+    let labels = "";
+    pts.forEach((x, i) => {
+      const t = hm(x.t);
+      if (t.endsWith(":00") && Number(t.slice(0, 2)) % 6 === 0 && i * bw < W - 34)
+        labels += '<text x="' + (i * bw).toFixed(1) + '" y="' + (H - 4) + '">' + hm(x.t) + "</text>";
+    });
+    chart.innerHTML = '<svg viewBox="0 0 ' + W + " " + H + '">' + bars + labels + "</svg>";
+    note.innerHTML = "Live day-ahead spot prices for East Denmark from Energinet's open data, published until " + dayHm(new Date(pts[n - 1].t.getTime() + 15 * 6e4)) +
+      ". Spot only: grid tariff, tax and VAT come on top. The window is picked by the same logic as <a href=\"gridwise.html\">GridWise</a>.";
+  }
+
+  load().then(render).catch(() => {
+    answer.textContent = "Live prices are not available right now.";
+    note.innerHTML = "This panel normally shows today's electricity prices from Energinet and the cheapest time to charge. <a href=\"https://gridwise-dk.streamlit.app\">Try GridWise</a> instead.";
+  });
+})();
+</script>
 </body>
 </html>
