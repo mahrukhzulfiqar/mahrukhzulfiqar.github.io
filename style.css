@@ -289,3 +289,5 @@ section[id] { scroll-margin-top: 1rem; }
 .intro > div { min-width: 0; }
 .social a.cv-btn { text-decoration: none; padding: 0.45rem 1rem; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 600; }
 .social a.cv-btn:hover { background: #24365c; color: #fff; }
+.all-recs { margin: 0.5rem 0 0; font-weight: 600; }
+figcaption a { color: inherit; }
