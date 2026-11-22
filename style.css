@@ -241,3 +241,16 @@ section[id] { scroll-margin-top: 1rem; }
   .about, .quotes, .certs { grid-template-columns: 1fr; }
   .about { gap: 2rem; }
 }
+
+/* smaller contact and earlier-work boxes */
+.closing { padding: 2rem 2.25rem; border-radius: 18px; }
+.closing h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.contact-list li a { padding: 0.85rem 0; }
+.contact-list strong { font-size: 1.1rem; }
+.contact-list span { font-size: 0.95rem; }
+.earlier { padding: 1.5rem 1.75rem; gap: 2rem; margin-top: 2rem; border-radius: 18px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+.earlier-label { font-size: 0.9rem; margin-bottom: 0.35rem; }
+.earlier h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.earlier p { font-size: 0.95rem; margin-bottom: 0.75rem; }
+.earlier-go { font-size: 0.95rem; }
+.earlier-art { gap: 0.6rem; max-width: 26rem; justify-self: end; }
