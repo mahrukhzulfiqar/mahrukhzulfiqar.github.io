@@ -308,3 +308,23 @@ li.has-photo > div { cursor: pointer; }
 #photo-box::backdrop { background: rgba(22, 35, 63, 0.75); }
 #photo-box img { display: block; max-width: min(92vw, 60rem); max-height: 85vh; border-radius: 14px; }
 .photo-close { position: absolute; top: -0.9rem; right: -0.9rem; width: 2.2rem; height: 2.2rem; border-radius: 999px; border: 0; background: #fff; color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+/* events: title only, expand for photo, description and link */
+.events { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.events > li { border-bottom: 1px solid var(--line); }
+.event summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 1.5rem; align-items: start; padding: 1.6rem 0; }
+.event summary::-webkit-details-marker { display: none; }
+.event summary h3 { margin: 0.2rem 0 0; font-size: 1.35rem; }
+.event summary .meta { margin: 0; }
+.event summary .side { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+.event summary .go::after { content: " +"; }
+.event[open] summary .go::after { content: " \2212"; }
+.event summary:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+.event summary:focus-visible { outline: 2px solid #e3a12f; outline-offset: 4px; border-radius: 6px; }
+.event-body { display: grid; grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: 2rem; padding: 0 0 2rem; }
+.event-body img { width: 100%; border-radius: 12px; display: block; }
+.event-body p:first-child { margin-top: 0; }
+.event-body .post-link a + a { margin-left: 1.25rem; }
+@media (max-width: 52rem) { .event-body { grid-template-columns: 1fr; } .event summary { grid-template-columns: 1fr; } .event summary .side { flex-direction: row; align-items: center; } }
+.event .tag { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 999px; background: #e3f2e5; color: #1d5a2a; }
+.event .go { color: var(--ink); font-weight: 600; font-size: 0.95rem; }
+.event .meta { color: var(--ink-faint); font-size: 0.9rem; }
