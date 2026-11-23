@@ -297,3 +297,5 @@ figcaption a { color: inherit; }
 .site-head .home { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 999px; border: 1.5px solid var(--line); color: var(--ink); }
 .site-head .home:hover { background: var(--tint); border-color: var(--ink); }
 .site-head .home:focus-visible { outline: 2px solid var(--amber, #e3a12f); outline-offset: 2px; }
+.event-photo { display: block; width: 100%; max-width: 34rem; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin: 0 0 1rem; background: var(--tint); }
+.post-link { margin: 0.75rem 0 0; font-size: 0.95rem; font-weight: 600; }
