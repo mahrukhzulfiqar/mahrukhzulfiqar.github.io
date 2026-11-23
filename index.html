@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=17">
+<link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
 <div class="wrap">
@@ -152,17 +152,15 @@
 <section id="conferences" aria-labelledby="conf-h">
   <div class="section-title"><h2 id="conf-h">Workshops &amp; conferences</h2></div>
   <ul class="stories">
-    <li class="story"><div><div>
-        <img class="event-photo" src="img/events/nordpak.jpg" alt="Mahrukh on stage at the Women in Tech panel, NordPak Foundation Tech Meetup, DTU" loading="lazy" onerror="this.remove()">
+    <li class="story" data-photo="img/events/nordpak.jpg" data-alt="Mahrukh on stage at the Women in Tech panel, NordPak Foundation Tech Meetup, DTU"><div><div>
         <p class="meta">NordPak Foundation Tech Meetup 2026, DTU, Kongens Lyngby, November 2026</p>
         <h3>Women in Tech panel</h3>
         <p>Panelist on the Women in Tech panel, and I led the coordination of the panel at the NordPak Foundation's invitation. I shared how I went from not knowing how to code to becoming a Product Manager at The LEGO Group, including the rejections along the way.</p>
-        <p class="post-link"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7529898995314360321/">See the LinkedIn post</a></p>
+        <p class="post-link"><button type="button" class="photo-btn">View photo</button><a href="https://www.linkedin.com/feed/update/urn:li:activity:7529898995314360321/">See the LinkedIn post</a></p>
       </div>
       <div class="side"><span class="tag">Panel</span><span class="go">Panelist</span></div></div></li>
-    <li class="story story-rich"><div>
+    <li class="story story-rich" data-photo="img/events/fpd.jpg" data-alt="The Autonomy Ladder workshop at Future Product Days 2026"><div>
       <div>
-        <img class="event-photo" src="img/events/fpd.jpg" alt="The Autonomy Ladder workshop at Future Product Days 2026" loading="lazy" onerror="this.remove()">
         <p class="meta">Future Product Days 2026, Copenhagen, 23 September 2026</p>
         <h3>The Autonomy Ladder: how much freedom should you give an AI agent?</h3>
         <p>I designed and ran a hands-on workshop for product, design and engineering professionals. No laptops: teams pressure-tested real agent designs against four questions.</p>
@@ -177,23 +175,22 @@
           <div><strong>75 min</strong><span>hands-on</span></div>
         </div>
         <div class="btns"><a class="btn" href="workshops.html">See how it works</a><a class="btn primary" href="contact.html">Book the workshop</a></div>
-        <p class="post-link"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7493644122365272065/">See the LinkedIn post</a></p>
+        <p class="post-link"><button type="button" class="photo-btn">View photo</button><a href="https://www.linkedin.com/feed/update/urn:li:activity:7493644122365272065/">See the LinkedIn post</a></p>
       </div>
       <div class="side"><span class="tag">Workshop</span><span class="go">Workshop host</span></div>
     </div></li>
-    <li class="story"><div><div>
-        <img class="event-photo" src="img/events/techbbq.jpg" alt="Gen Z panel at the Women in Tech Denmark Diversity Lounge, TechBBQ 2026" loading="lazy" onerror="this.remove()">
+    <li class="story" data-photo="img/events/techbbq.jpg" data-alt="Gen Z panel at the Women in Tech Denmark Diversity Lounge, TechBBQ 2026"><div><div>
         <p class="meta">TechBBQ 2026, Copenhagen, 27 August 2026</p>
         <h3>Gen Z is here: are you ready to lead the next generation?</h3>
         <p>Panelist at the Women in Tech Denmark Diversity Lounge, in a conversation hosted with Dansk Erhverv, alongside speakers from Dansk Erhverv, Dell Technologies and Danske Commodities. I brought the perspective from inside the generation being discussed.</p>
-        <p class="post-link"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7498002271469871105/">See the LinkedIn post</a></p>
+        <p class="post-link"><button type="button" class="photo-btn">View photo</button><a href="https://www.linkedin.com/feed/update/urn:li:activity:7498002271469871105/">See the LinkedIn post</a></p>
       </div>
       <div class="side"><span class="tag">Panel</span><span class="go">Panelist</span></div></div></li>
-    <li class="story"><div><div>
-        <img class="event-photo" src="img/events/devcon.jpg" alt="Mahrukh hosting LEGO Group DevCon 2024" loading="lazy" onerror="this.remove()">
+    <li class="story" data-photo="img/events/devcon.jpg" data-alt="Mahrukh hosting LEGO Group DevCon 2024"><div><div>
         <p class="meta">LEGO Group DevCon 2024, Billund</p>
         <h3>Connecting Factory Meters to the Cloud</h3>
         <p>Hosted the LEGO Group's internal developer conference as DevCon Pilot, for 1,000+ colleagues across Billund, London, Copenhagen and Budapest, and gave my first conference talk: the technical challenges and architecture behind connecting utility meters at the LEGO factory in Jiaxing to the cloud.</p>
+        <p class="post-link"><button type="button" class="photo-btn">View photo</button></p>
       </div>
       <div class="side"><span class="tag">Talk</span><span class="go">Host and speaker</span></div></div></li>
   </ul>
@@ -207,5 +204,17 @@
   <p><a href="mailto:mahrukzulfiqar@gmail.com">Email</a> &nbsp; <a href="https://www.linkedin.com/in/mahrukhzulfiqar/">LinkedIn</a> &nbsp; <a href="https://github.com/mahrukhzulfiqar">GitHub</a></p>
 </footer>
 </div>
+<dialog id="photo-box" aria-label="Event photo"><button type="button" class="photo-close" aria-label="Close">&times;</button><img alt=""></dialog>
+<script>
+(function(){
+  var box=document.getElementById('photo-box'), im=box.querySelector('img');
+  function open(li){ im.src=li.dataset.photo; im.alt=li.dataset.alt||''; box.showModal(); }
+  document.querySelectorAll('li[data-photo]').forEach(function(li){
+    li.classList.add('has-photo');
+    li.addEventListener('click',function(e){ if(e.target.closest('a')) return; open(li); });
+  });
+  box.addEventListener('click',function(e){ if(e.target===box||e.target.closest('.photo-close')) box.close(); });
+})();
+</script>
 </body>
 </html>
