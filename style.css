@@ -294,3 +294,6 @@ figcaption a { color: inherit; }
 .contact-page { padding: 4.5rem 0 3rem; max-width: 46rem; }
 .contact-page h1 { font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 0.75rem; }
 .contact-page .contact-list { margin-top: 2.25rem; }
+.site-head .home { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 999px; border: 1.5px solid var(--line); color: var(--ink); }
+.site-head .home:hover { background: var(--tint); border-color: var(--ink); }
+.site-head .home:focus-visible { outline: 2px solid var(--amber, #e3a12f); outline-offset: 2px; }
