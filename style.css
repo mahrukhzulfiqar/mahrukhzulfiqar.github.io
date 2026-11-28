@@ -356,3 +356,17 @@ li.has-photo > div { cursor: pointer; }
 .stat-strip span { display: block; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.4; margin-top: 0.2rem; }
 @media (max-width: 40rem) { .stat-strip { grid-template-columns: 1fr; } }
 .cs figure.vis, .stat-strip { width: min(55rem, calc(100vw - 3rem)); max-width: none; }
+/* workshop offer */
+.offer-head .btns { margin-top: 1.5rem; }
+.offer { padding: 2.5rem 0 0.5rem; }
+.offer h2 { font-size: 1.6rem; margin: 0 0 0.75rem; }
+.offer-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin-top: 1.25rem; }
+.offer-grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.offer-grid > div { background: var(--tint); border-radius: 14px; padding: 1.2rem 1.25rem; border-top: 4px solid #e3a12f; }
+.offer-grid h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+.offer-grid p { margin: 0; color: var(--ink-soft); font-size: 0.98rem; line-height: 1.55; }
+.steps { padding-left: 1.3rem; max-width: 46rem; }
+.steps > li { margin-bottom: 1rem; line-height: 1.6; }
+.steps ul { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--ink-soft); }
+.offer .who { margin-top: 1.25rem; max-width: 46rem; color: var(--ink-soft); }
+@media (max-width: 52rem) { .offer-grid, .offer-grid.two { grid-template-columns: 1fr; } }

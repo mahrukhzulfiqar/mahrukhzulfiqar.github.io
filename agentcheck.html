@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How much freedom should an AI agent get? Agent Check case study, Mahrukh Zulfiqar</title>
+<meta name="description" content="Agent Check product case study: an AI tool that tells teams how much freedom each action of their AI agent should get.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=22">
+</head>
+<body>
+<div class="wrap">
+<header class="site-head">
+  <a class="home" href="index.html" aria-label="Home, Mahrukh Zulfiqar" title="Home"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></a>
+  <nav aria-label="Main">
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#projects" aria-current="page">Projects</a>
+    <a href="index.html#conferences">Workshops &amp; conferences</a>
+    <a href="about.html">About me</a>
+    <a class="pill" href="contact.html">Contact me</a>
+  </nav>
+</header>
+<main>
+<article class="article cs">
+  <p><a class="back" href="index.html#projects">Back to projects</a></p>
+  <p class="meta-line">Agent Check, personal product case study</p>
+  <h1>How much freedom should an AI agent get?</h1>
+  <p class="sub">A tool that reads an agent's actions and tells the team which ones have more freedom than their risk allows, and how to fix it.</p>
+  <dl class="cs-meta">
+    <div><dt>Role</dt><dd>Product owner and builder</dd></div>
+    <div><dt>Duration</dt><dd>November 2026</dd></div>
+    <div><dt>Status</dt><dd>v0.1 prototype</dd></div>
+  </dl>
+  <div class="links"><a class="btn primary" href="img/agentcheck/sample-card.html">Open a sample autonomy card</a><a class="btn" href="https://github.com/mahrukhzulfiqar/agent-check">Code and product docs</a></div>
+
+  <p>Agent Check takes an agent's tool list, the actions it can take such as issuing refunds, sending emails or deploying code, and produces an autonomy card. For each action it shows what the action does, whether it can be undone, who it reaches, how much freedom it has today and how much it should have. The riskiest gaps come first, each with a concrete fix, plus a first pass against the EU AI Act.</p>
+  <p>I defined the problem, did the market research, designed the levels and rules, built the tool and its evaluation set, and wrote the product docs. It is a solo project.</p>
+
+  <figure class="vis">
+    <img src="img/agentcheck/card-support-agent.png" alt="Autonomy card for a customer support agent: 57% of actions within their level; cancelling subscriptions and emailing customers run unattended but cannot be undone." loading="lazy">
+    <figcaption>The card for an example customer support agent. Seven actions, three with more freedom than their risk allows.</figcaption>
+  </figure>
+
+  <div class="stat-strip">
+    <div><strong>5 agents</strong><span>checked so far, including my own GridWise and career-ops-dk</span></div>
+    <div><strong>85%</strong><span>exact agreement with hand-labelled actions, offline baseline</span></div>
+    <div><strong>100%</strong><span>of recommendations within one level of the label</span></div>
+  </div>
+
+  <h2>Context and responsibility</h2>
+  <p>The question comes from my Autonomy Ladder workshop, where teams decide together how much freedom an agent should get. After the first session, people asked for a way to check their own agent before they had the whole team in a room. Agent Check is that first step. The workshop's game stays private; the tool uses public questions and its own five levels.</p>
+
+  <h2>Problem and evidence</h2>
+  <p>Agents are already in production, and the controls are arriving later. The desk research pointed the same way from several sides:</p>
+  <ul>
+    <li><strong>Autonomy is already granted.</strong> In one 2026 survey, 59.5% of enterprise leaders run agents autonomously in production, and 83% rate stronger guardrails as at least as important as smarter models.</li>
+    <li><strong>Tests are not catching it.</strong> Half of enterprises in a June 2026 survey had shipped an agent that passed internal evaluations and still caused a customer-facing failure.</li>
+    <li><strong>The frameworks are papers.</strong> Researchers and the Cloud Security Alliance have proposed autonomy levels, but I found nothing a team can run against its own agent in minutes.</li>
+    <li><strong>There is a deadline.</strong> Since 2 August 2026, the EU AI Act requires telling people when they talk to an AI agent.</li>
+  </ul>
+  <p>The insight that shaped the product: autonomy is not granted to an agent as a whole. It is granted one tool at a time, usually by whoever adds the tool. So that is the level Agent Check works at.</p>
+
+  <h2>Options and decision</h2>
+  <table>
+    <thead><tr><th>Option</th><th>What it optimised for</th><th>Decision</th></tr></thead>
+    <tbody>
+      <tr><td>Ask a language model to rate the agent</td><td>The fastest path, flexible answers</td><td>Rejected. Ratings would drift between runs and could not be explained or tested.</td></tr>
+      <tr><td>A scoring sheet the team fills in</td><td>Full control, no AI risk</td><td>Rejected. Slow, and nobody fills it in for every new tool.</td></tr>
+      <tr><td>The model judges facts, rules set the level <span class="chosen">Chosen</span></td><td>Speed with explainable, stable verdicts</td><td>Chosen. Claude answers four factual questions per tool; plain code turns them into a level and a fix.</td></tr>
+    </tbody>
+  </table>
+  <p>It is the same principle as GridWise: AI where judgement is needed, plain rules where the decision has to be explained.</p>
+
+  <h3>What I deliberately did not build</h3>
+  <ul>
+    <li><strong>A single score for the whole agent.</strong> It hides the one action that matters.</li>
+    <li><strong>Legal advice.</strong> The EU AI Act check only flags rules with clear triggers, and every card says so.</li>
+    <li><strong>The workshop game.</strong> It stays private, so the tool leads to the workshop instead of replacing it.</li>
+  </ul>
+
+  <h2>How it works</h2>
+  <figure class="vis">
+    <img src="img/agentcheck/how-it-works.svg" alt="Describe the agent, Claude judges facts per tool, fixed rules set the level, and an autonomy card shows gaps and fixes." loading="lazy">
+  </figure>
+
+  <figure class="vis">
+    <img src="img/agentcheck/levels.svg" alt="Five levels: unattended, acts within limits, acts with approval, suggests, read only, with examples." loading="lazy">
+  </figure>
+
+  <h2>Trade-offs</h2>
+  <ul>
+    <li><strong>Rules over model judgement for the level:</strong> explainable and stable, but blunter than a person's judgement, so the card is a first pass.</li>
+    <li><strong>An offline judge alongside Claude:</strong> free to try and a clear baseline, but literal; an oddly named tool fools it.</li>
+    <li><strong>Treating tool descriptions as data:</strong> protects against prompt injection from third-party tools, at the cost of free-form reasoning.</li>
+    <li><strong>Tracking "too loose" on its own:</strong> one more number to explain, but too much freedom causes incidents while too little only costs speed.</li>
+  </ul>
+
+  <h2>Result and limits</h2>
+  <p>I ran Agent Check on five example agents, including my own two projects:</p>
+  <table>
+    <thead><tr><th>Agent</th><th>Within level</th><th>What it found</th></tr></thead>
+    <tbody>
+      <tr><td>Customer support agent</td><td>57%</td><td>Cancelling subscriptions and emailing customers run unattended but cannot be undone.</td></tr>
+      <tr><td>DevOps assistant</td><td>29%</td><td>Shell commands in production should be suggest-only; deleting backups needs approval.</td></tr>
+      <tr><td>Recruiting screener</td><td>0%</td><td>Rejection emails should be drafted, not sent. Flags a possible high-risk use under the EU AI Act.</td></tr>
+      <tr><td>GridWise</td><td>100%</td><td>Read-only tools. The design holds.</td></tr>
+      <tr><td>career-ops-dk form filler</td><td>100%</td><td>Every action limited, submit blocked.</td></tr>
+    </tbody>
+  </table>
+  <blockquote><p><strong>How good is it?</strong> Against 26 hand-labelled actions, the offline judge agrees exactly on 22 (85%) and is never more than one level off. In three cases it recommends more freedom than the label, all because it missed that an action affects a customer. That gap is what the Claude judge is for.</p></blockquote>
+  <p>The limits are clear. I wrote both the labels and the rules, so the score is optimistic until someone else labels the set. Nobody outside has used it yet. Both are first on the roadmap.</p>
+  <p><strong>How I would measure success:</strong> the share of cards after which a team changes at least one permission or guardrail. A card that changes nothing was not useful.</p>
+
+  <h2>Learning</h2>
+  <p>The useful unit for agent safety is the single action, not the agent. Once I framed it that way, the rest followed: judge facts per action, keep the decision in rules people can read, and measure the dangerous mistake separately from the harmless one.</p>
+  <p>Next: independent labels, the Claude judge's own score, a web version where you paste a tool list, and five sessions with PMs who run agents.</p>
+
+  <h2>Evidence note</h2>
+  <p class="note-small">Market figures come from published 2026 surveys and articles (VentureBeat, Caylent via Campus Technology, Statistics Denmark via Ingeniøren, EU AI Act guidance), listed in the <a href="https://github.com/mahrukhzulfiqar/agent-check/blob/main/product/research.md">research notes</a>. The five agents are examples written for testing; the GridWise and career-ops-dk specs describe my own projects. Every decision is in the <a href="https://github.com/mahrukhzulfiqar/agent-check/blob/main/product/decision-log.md">decision log</a>.</p>
+
+  <h2>Related work</h2>
+  <ul class="related">
+    <li><a href="workshops.html">The Autonomy Ladder: book the workshop for your team</a></li>
+    <li><a href="careerops.html">career-ops-dk: an agentic job-search pipeline</a></li>
+    <li><a href="gridwise.html">GridWise: when should I charge my EV tonight?</a></li>
+  </ul>
+</article>
+
+</main>
+<footer class="site-foot">
+  <p>Mahrukh Zulfiqar, Copenhagen</p>
+  <p><a href="mailto:mahrukzulfiqar@gmail.com">Email</a> &nbsp; <a href="https://www.linkedin.com/in/mahrukhzulfiqar/">LinkedIn</a> &nbsp; <a href="https://github.com/mahrukhzulfiqar">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>
