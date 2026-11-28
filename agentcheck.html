@@ -44,7 +44,7 @@
   </figure>
 
   <div class="stat-strip">
-    <div><strong>5 agents</strong><span>checked so far, including my own GridWise and career-ops-dk</span></div>
+    <div><strong>5 agents</strong><span>checked so far, including my own career-ops-dk</span></div>
     <div><strong>85%</strong><span>exact agreement with hand-labelled actions, offline baseline</span></div>
     <div><strong>100%</strong><span>of recommendations within one level of the label</span></div>
   </div>
@@ -71,7 +71,7 @@
       <tr><td>The model judges facts, rules set the level <span class="chosen">Chosen</span></td><td>Speed with explainable, stable verdicts</td><td>Chosen. Claude answers four factual questions per tool; plain code turns them into a level and a fix.</td></tr>
     </tbody>
   </table>
-  <p>It is the same principle as GridWise: AI where judgement is needed, plain rules where the decision has to be explained.</p>
+  <p>The principle: AI where judgement is needed, plain rules where the decision has to be explained.</p>
 
   <h3>What I deliberately did not build</h3>
   <ul>
@@ -98,14 +98,13 @@
   </ul>
 
   <h2>Result and limits</h2>
-  <p>I ran Agent Check on five example agents, including my own two projects:</p>
+  <p>I ran Agent Check on example agents, including my own career-ops-dk:</p>
   <table>
     <thead><tr><th>Agent</th><th>Within level</th><th>What it found</th></tr></thead>
     <tbody>
       <tr><td>Customer support agent</td><td>57%</td><td>Cancelling subscriptions and emailing customers run unattended but cannot be undone.</td></tr>
       <tr><td>DevOps assistant</td><td>29%</td><td>Shell commands in production should be suggest-only; deleting backups needs approval.</td></tr>
       <tr><td>Recruiting screener</td><td>0%</td><td>Rejection emails should be drafted, not sent. Flags a possible high-risk use under the EU AI Act.</td></tr>
-      <tr><td>GridWise</td><td>100%</td><td>Read-only tools. The design holds.</td></tr>
       <tr><td>career-ops-dk form filler</td><td>100%</td><td>Every action limited, submit blocked.</td></tr>
     </tbody>
   </table>
@@ -118,13 +117,12 @@
   <p>Next: independent labels, the Claude judge's own score, a web version where you paste a tool list, and five sessions with PMs who run agents.</p>
 
   <h2>Evidence note</h2>
-  <p class="note-small">Market figures come from published 2026 surveys and articles (VentureBeat, Caylent via Campus Technology, Statistics Denmark via Ingeniøren, EU AI Act guidance), listed in the <a href="https://github.com/mahrukhzulfiqar/agent-check/blob/main/product/research.md">research notes</a>. The five agents are examples written for testing; the GridWise and career-ops-dk specs describe my own projects. Every decision is in the <a href="https://github.com/mahrukhzulfiqar/agent-check/blob/main/product/decision-log.md">decision log</a>.</p>
+  <p class="note-small">Market figures come from published 2026 surveys and articles (VentureBeat, Caylent via Campus Technology, Statistics Denmark via Ingeniøren, EU AI Act guidance), listed in the <a href="https://github.com/mahrukhzulfiqar/agent-check/blob/main/product/research.md">research notes</a>. The five agents are examples written for testing; the career-ops-dk spec describes my own project. Every decision is in the <a href="https://github.com/mahrukhzulfiqar/agent-check/blob/main/product/decision-log.md">decision log</a>.</p>
 
   <h2>Related work</h2>
   <ul class="related">
     <li><a href="workshops.html">The Autonomy Ladder: book the workshop for your team</a></li>
     <li><a href="careerops.html">career-ops-dk: an agentic job-search pipeline</a></li>
-    <li><a href="gridwise.html">GridWise: when should I charge my EV tonight?</a></li>
   </ul>
 </article>
 
