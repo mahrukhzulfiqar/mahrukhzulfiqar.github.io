@@ -346,3 +346,13 @@ li.has-photo > div { cursor: pointer; }
 @media (max-width: 40rem) { .gw-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gw-try { padding: 1.1rem; } }
 .gw-chart { overflow: hidden; touch-action: pan-y; }
 .gw-legend { row-gap: 0.4rem; }
+/* career-ops visuals */
+.cs figure.vis { margin: 2rem 0; }
+.cs figure.vis img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 16px; }
+.cs figure.vis figcaption { font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.5rem; }
+.stat-strip { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin: 0 0 1rem; }
+.stat-strip div { padding: 1rem 1.1rem; border-radius: 14px; background: var(--tint); }
+.stat-strip strong { display: block; font-size: 1.6rem; color: var(--ink); letter-spacing: -0.02em; }
+.stat-strip span { display: block; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.4; margin-top: 0.2rem; }
+@media (max-width: 40rem) { .stat-strip { grid-template-columns: 1fr; } }
+.cs figure.vis, .stat-strip { width: min(55rem, calc(100vw - 3rem)); max-width: none; }

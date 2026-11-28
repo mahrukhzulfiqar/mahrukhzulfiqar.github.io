@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>An agentic job-search pipeline for the Danish market. career-ops-dk case study, Mahrukh Zulfiqar</title>
+<title>An agentic job-search pipeline. career-ops-dk case study, Mahrukh Zulfiqar</title>
 <meta name="description" content="career-ops-dk product case study: an agentic AI job-search pipeline for Denmark, designed so a human always clicks Submit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=21">
 </head>
 <body>
 <div class="wrap">
@@ -26,8 +26,8 @@
 <article class="article cs">
   <p><a class="back" href="index.html#projects">Back to projects</a></p>
   <p class="meta-line">career-ops-dk, personal product case study</p>
-  <h1>An agentic job-search pipeline for the Danish market</h1>
-  <p class="sub">An agentic job-search pipeline for Denmark, designed around one rule: the step that cannot be undone stays with a human.</p>
+  <h1>An agentic job-search pipeline</h1>
+  <p class="sub">AI agents that find, score and prepare job applications, designed around one rule: the step that cannot be undone stays with a human.</p>
   <dl class="cs-meta">
     <div><dt>Role</dt><dd>Product owner and contributor</dd></div>
     <div><dt>Duration</dt><dd>September to November 2026</dd></div>
@@ -37,6 +37,15 @@
 
   <p>career-ops-dk extends career-ops, an open-source AI job-search system, for the Danish market. It finds roles on Jobindex.dk that the standard setup never sees, triages and scores them, prepares a tailored application for each good fit, and has a browser agent fill the application form. Then it stops. The candidate reads the form and clicks Submit.</p>
   <p>I own the repository and its product direction. I wrote the product case study, the decision log, the success metrics and the roadmap, designed how the AI agents are described and governed, and made the system run on macOS. The first version of the scanner and form filler was built by Talha (talha-zshan on GitHub), and the git history shows who wrote which code.</p>
+
+  <figure class="vis">
+    <img src="img/careerops/pipeline.svg" alt="Pipeline: discover with code, triage and evaluate with AI, prepare with code, fill with a fenced browser agent, and you submit." loading="lazy">
+  </figure>
+  <div class="stat-strip">
+    <div><strong>13 vs 2</strong><span>Danish product roles found on Jobindex vs ten company boards, in one scan</span></div>
+    <div><strong>about $0.26</strong><span>model cost to fill one application form</span></div>
+    <div><strong>0</strong><span>applications the agent can send without a human click</span></div>
+  </div>
 
   <h2>Context and responsibility</h2>
   <p>I use the pipeline for my own job search in Denmark, so I am also its first user. That made the stakes concrete: every application it touches goes to a real employer with my name on it.</p>
@@ -48,6 +57,9 @@
     <li><strong>Discovery missed most Danish roles.</strong> In one scan, the ten configured company boards returned 2 Danish product roles. Jobindex.dk returned 13, including the enterprise and public-sector tier (banks, regions, KOMBIT) that no company board reached.</li>
     <li><strong>Applying was slow, and the fast options were unsafe.</strong> Every application means retyping the same details. Auto-apply tools fix that by submitting for you and guessing what they do not know, including work authorisation and salary. One popular open-source example tells the agent to make its best guess, even on legal declarations.</li>
   </ul>
+  <figure class="vis">
+    <img src="img/careerops/sources.svg" alt="Danish product roles found in one scan: 13 on Jobindex.dk, 2 across ten company job boards." loading="lazy">
+  </figure>
   <p>The worst failure is not a slow application but a wrong one: a cover letter written for one employer arriving in another employer's form. It is visible, cannot be taken back, and reads as careless.</p>
 
   <h2>Options and decision</h2>
@@ -60,6 +72,10 @@
     </tbody>
   </table>
   <p>A rule in a prompt can be ignored by a model. An action the agent does not have cannot be used. So the click action is replaced by a guarded one that refuses submit, send and apply buttons in English and Danish, and navigation is limited to the posting's own website.</p>
+  <figure class="vis">
+    <img src="img/careerops/submit.svg" alt="Mock form filled by the agent from the profile, salary left as a stopped question, Submit locked for the agent, with four guardrails listed." loading="lazy">
+    <figcaption>Illustration with test data. The real runner leaves the form open in a browser tab for review.</figcaption>
+  </figure>
 
   <h3>What we deliberately did not build</h3>
   <ul>
@@ -70,20 +86,9 @@
 
   <h2>Agentic AI design</h2>
   <p>The pipeline uses AI at four points, and each one gets only as much freedom as its mistakes can afford.</p>
-  <figure class="flow" aria-label="Pipeline: discover, decide, prepare, fill, then the candidate submits">
-<svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto">
-<title>career-ops-dk pipeline</title>
-<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#8a94a8"/></marker></defs>
-<g font-family="inherit" text-anchor="middle">
-<g><rect x="4" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#d3dce5"/><text x="68" y="58" font-size="14" font-weight="600" fill="#16233f">Discover</text><text x="68" y="78" font-size="11" fill="#55617a">Jobindex + boards</text><text x="68" y="122" font-size="11" fill="#8a94a8">code only</text></g>
-<g><rect x="158" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#16233f"/><text x="222" y="58" font-size="14" font-weight="600" fill="#16233f">Decide</text><text x="222" y="78" font-size="11" fill="#55617a">triage, evaluate</text><text x="222" y="122" font-size="11" fill="#16233f">AI</text></g>
-<g><rect x="312" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#d3dce5"/><text x="376" y="58" font-size="14" font-weight="600" fill="#16233f">Prepare</text><text x="376" y="78" font-size="11" fill="#55617a">one folder per role</text><text x="376" y="122" font-size="11" fill="#8a94a8">code only</text></g>
-<g><rect x="466" y="30" width="128" height="70" rx="10" fill="#fff" stroke="#16233f"/><text x="530" y="58" font-size="14" font-weight="600" fill="#16233f">Fill</text><text x="530" y="78" font-size="11" fill="#55617a">browser agent</text><text x="530" y="122" font-size="11" fill="#16233f">AI, fenced</text></g>
-<g><rect x="620" y="30" width="136" height="70" rx="35" fill="#e3a12f"/><text x="688" y="58" font-size="14" font-weight="700" fill="#16233f">You submit</text><text x="688" y="78" font-size="11" fill="#16233f">after review</text><text x="688" y="122" font-size="11" fill="#8a94a8">human only</text></g>
-<g stroke="#8a94a8" stroke-width="1.5" marker-end="url(#ar)"><line x1="134" y1="65" x2="154" y2="65"/><line x1="288" y1="65" x2="308" y2="65"/><line x1="442" y1="65" x2="462" y2="65"/><line x1="596" y1="65" x2="616" y2="65"/></g>
-</g></svg>
-<figcaption>AI is used only where judgement is needed. Everything that plain code can do, and the one step that cannot be undone, stays outside the model.</figcaption>
-</figure>
+  <figure class="vis">
+    <img src="img/careerops/autonomy.svg" alt="Autonomy ladder: triage is read only, conversation suggests, the browser agent acts inside fences, evaluation runs unattended as a documented exception, and nothing has full autonomy." loading="lazy">
+  </figure>
   <table>
     <thead><tr><th>Stage</th><th>Freedom</th><th>Guardrails</th></tr></thead>
     <tbody>
